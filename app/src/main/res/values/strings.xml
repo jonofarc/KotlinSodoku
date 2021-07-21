@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Sodoku</string>
+    <string name="game_title">Kotlin Sodoku</string>
+    <string name="set_dificulty">Set dificulty</string>
+    <string name="start">Start</string>
+    <string name="hard">Hard</string>
+    <string name="easy">Easy</string>
+</resources>
