@@ -2,7 +2,7 @@ package com.example.sodoku
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_game_screen.*
 
 class GameScreenActivity : AppCompatActivity() {
 
@@ -23,6 +23,7 @@ class GameScreenActivity : AppCompatActivity() {
     private fun setUI() {
         val gameScreenRepository = GameScreenImpl(this@GameScreenActivity)
         gameScreenRepository.setLvl()
+        gameScreenRepository.setUI(sudokuRV)
 
     }
 
