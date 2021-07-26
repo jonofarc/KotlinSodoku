@@ -13,6 +13,7 @@ import kotlinx.android.synthetic.main.cell_layout.view.*
 
 class SudokuGameRecyclerViewAdapter(
     private val sudokuValues: MutableList<Int>,
+    val hiddenValues: MutableList<Int>,
     val width: Int,
     val height: Int,
     val cellClick: (Any) -> Unit
@@ -35,8 +36,12 @@ class SudokuGameRecyclerViewAdapter(
         holder.cellRoot.layoutParams = params
 
 
-
-        holder.cellValue.text = sudokuValues[position].toString()
+        if(!hiddenValues.contains(position)){
+            holder.cellValue.text = sudokuValues[position].toString()
+        }else{
+            holder.cellValue.text = ""
+        }
+        //holder.cellValue.text = sudokuValues[position].toString()
         holder.cellRoot.setOnClickListener{
 
             cellClick(position)
@@ -44,6 +49,8 @@ class SudokuGameRecyclerViewAdapter(
         }
 
     }
+
+
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var cellValue: TextView = v.cellValue

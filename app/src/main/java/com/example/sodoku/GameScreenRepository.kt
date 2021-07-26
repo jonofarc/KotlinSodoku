@@ -63,13 +63,15 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
         val dificultyLvlExtra = activity.intent.extras?.getInt(GameScreenActivity.GAME_DIFICULTY, 1) ?: 1
         difficultyLvl = dificultyLvlExtra
         Toast.makeText(activity,"Difficulty set to $difficultyLvl", Toast.LENGTH_SHORT).show()
-        createSodokuMatrix()
+        createSudokuMatrix()
     }
 
     override fun setUI(sudokuRV: RecyclerView) {
 
         setSudokuGameRecyclerViewAdapter(sudokuRV)
+
     }
+
 
     private fun setSudokuGameRecyclerViewAdapter(sudokuRV: RecyclerView) {
         sudokuRV.setHasFixedSize(true)
@@ -79,8 +81,9 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
 
         val width = displayMetrics.widthPixels*0.9
 
+        val hiddenValues = hideSudokuValues(sudokuMatrix)
 
-        val adapter = SudokuGameRecyclerViewAdapter(sudokuMatrix,(width).toInt(), (width).toInt()){ cellPossition ->
+        val adapter = SudokuGameRecyclerViewAdapter(sudokuMatrix, hiddenValues,(width).toInt(), (width).toInt()){ cellPossition ->
             Toast.makeText(activity, "$cellPossition", Toast.LENGTH_SHORT).show()
         }
 
@@ -93,12 +96,41 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
         sudokuRV.adapter = adapter
 
 
+
+    }
+
+    private fun hideSudokuValues(sudokuMatrix: MutableList<Int>): MutableList<Int> {
+
+        val hiddenValues = mutableListOf<Int>()
+
+
+
+        for(i in 1 .. difficultyLvl){
+
+            var newNumberFound = false
+            while (!newNumberFound){
+
+                val randomInteger = (0..81).shuffled().first()
+
+                if(!hiddenValues.contains(randomInteger)){
+                    hiddenValues.add(randomInteger)
+                    newNumberFound=true
+                }
+
+
+
+            }
+
+
+        }
+
+        return hiddenValues
     }
 
 
-    private fun createSodokuMatrix() {
+    private fun createSudokuMatrix() {
 
-        //TODO create actual values
+        //Initialise sudokuMatrix
         sudokuMatrix.addAll(10..90)
 
         // insert real values any value above 9 is not a valid value
@@ -202,10 +234,6 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
                     sudokuMatrix.addAll(10..90)
                     hardResetTries = 0
                 }
-
-
-
-
             }
 
 
@@ -214,18 +242,6 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
             softResetTries = 0
             hardResetTries = 0
 
-            Log.d(TAG, "cellValue $i = $randomInteger")
-            for(i in 0..8){
-                Log.d(TAG, "|${sudokuMatrix[0+(9*i)]}|" +
-                        "${sudokuMatrix[1+(9*i)]}|" +
-                        "${sudokuMatrix[2+(9*i)]}|" +
-                        "${sudokuMatrix[3+(9*i)]}|" +
-                        "${sudokuMatrix[4+(9*i)]}|" +
-                        "${sudokuMatrix[5+(9*i)]}|" +
-                        "${sudokuMatrix[6+(9*i)]}|" +
-                        "${sudokuMatrix[7+(9*i)]}|" +
-                        "${sudokuMatrix[8+(9*i)]}|")
-            }
 
 
         }

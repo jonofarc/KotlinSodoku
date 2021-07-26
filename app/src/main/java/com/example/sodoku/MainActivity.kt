@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         val mainActivityRepository = MainActivityImpl(this@MainActivity)
 
-        dificultyValue.text = "1"
+        dificultyValue.text = "45"
         dificultySb.max = 81
-        dificultySb.min = 1
+        dificultySb.min = 45
 
 
         dificultySb.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -32,7 +32,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
-                // TODO Auto-generated method stub
                 dificultyValue.text = progress.toString()
                 mainActivityRepository.setDificultyLvl(progress)
             }
