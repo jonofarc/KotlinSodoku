@@ -66,9 +66,7 @@ class SudokuGameRecyclerViewAdapter(
 
         holder.cellRoot.setOnClickListener{
 
-            if(hiddenValues.contains(position)){
-                checkCorrectValue(holder.cellValue.text.toString(), currentSetValue.toString(),position)
-            }
+
             cellClick(position)
 
         }
@@ -112,7 +110,7 @@ class SudokuGameRecyclerViewAdapter(
 
     }
 
-    private fun checkCorrectValue(oldValue: String, newValue: String, position: Int) {
+    fun checkCorrectValue(oldValue: String, newValue: String, position: Int) {
 
         if(oldValue == sudokuValues[position].toString()){
             correctCells --

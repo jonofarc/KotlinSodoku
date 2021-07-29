@@ -37,7 +37,9 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     }
     private val SUDOKU_SIZE = 81
     private var difficultyLvl = 1
+    private var selectedCell = -1
     private val sudokuMatrix: MutableList<Int> = mutableListOf()
+    private var hiddenValues: MutableList<Int> = hideSudokuValues()
     private val displaySudokuMatrix: MutableList<Int> = mutableListOf()
     private lateinit var adapter: SudokuGameRecyclerViewAdapter
 
@@ -98,6 +100,13 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
     override fun setCurrentValue(currentValue: Int) {
         adapter.currentSetValue = currentValue
+        if(hiddenValues.contains(selectedCell )){
+
+            adapter.checkCorrectValue(displaySudokuMatrix[selectedCell].toString() , adapter.currentSetValue.toString(),currentValue)
+            displaySudokuMatrix[selectedCell] = adapter.currentSetValue
+            adapter.notifyDataSetChanged()
+        }
+
     }
 
     override fun setValuesColor(ll: LinearLayout, color: ColorStateList?) {
@@ -121,7 +130,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
         val width = displayMetrics.widthPixels*0.9
 
-        val hiddenValues = hideSudokuValues()
+        hiddenValues = hideSudokuValues()
 
         hiddenValues.forEach {
             Log.d(TAG, "hiddenValue: $it")
@@ -135,6 +144,8 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
             if(adapter.correctCells >= SUDOKU_SIZE){
                 gameCompletedCl.visibility = View.VISIBLE
             }
+
+            selectedCell = cellPossition as Int
 
             // set color to pertinent cell for selected cell
 
@@ -170,9 +181,9 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
             }
 
-            if(hiddenValues.contains(cellPossition as Int)){
-                displaySudokuMatrix[cellPossition] = adapter.currentSetValue
-            }
+
+
+
 
             adapter.notifyDataSetChanged()
             adapter.currentSetValue = -1
