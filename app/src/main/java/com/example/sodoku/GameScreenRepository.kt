@@ -34,6 +34,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     private val SUDOKU_SIZE = 81
     private var difficultyLvl = 1
     private val sudokuMatrix: MutableList<Int> = mutableListOf()
+    private val displaySudokuMatrix: MutableList<Int> = mutableListOf()
     private lateinit var adapter: SudokuGameRecyclerViewAdapter
 
     val horizontalCells = mutableListOf(
@@ -90,7 +91,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     }
 
     override fun setCurrentValue(currentValue: Int) {
-        adapter?.currentSetValue = currentValue
+        adapter.currentSetValue = currentValue
     }
 
     override fun setValuesColor(ll: LinearLayout, color: ColorStateList?) {
@@ -114,11 +115,16 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
         val hiddenValues = hideSudokuValues()
 
-        adapter = SudokuGameRecyclerViewAdapter(sudokuMatrix, hiddenValues,(width).toInt(), (width).toInt()){ cellPossition ->
+        hiddenValues.forEach {
+            Log.d(TAG, "hiddenValue: $it")
+            displaySudokuMatrix[it] = -1
+        }
 
-            adapter?.pertinentCells?.clear()
-            debugCorrectCells.text = adapter?.correctCells.toString()
-            if(adapter?.correctCells ?: 0 >= SUDOKU_SIZE){
+        adapter = SudokuGameRecyclerViewAdapter(sudokuMatrix, displaySudokuMatrix, hiddenValues,(width).toInt(), (width).toInt()){ cellPossition ->
+
+            adapter.pertinentCells.clear()
+            debugCorrectCells.text = adapter.correctCells.toString()
+            if(adapter.correctCells >= SUDOKU_SIZE){
                 gameCompletedCl.visibility = View.VISIBLE
             }
 
@@ -128,7 +134,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
             horizontalCells.forEach { horizontalLine ->
 
                 if(horizontalLine.contains(cellPossition)){
-                    adapter?.pertinentCells?.addAll(horizontalLine)
+                    adapter.pertinentCells.addAll(horizontalLine)
                 }
 
             }
@@ -140,7 +146,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
             verticalCells.forEach { verticalLine ->
 
                 if(verticalLine.contains(cellPossition)){
-                    adapter?.pertinentCells?.addAll(verticalLine)
+                    adapter.pertinentCells.addAll(verticalLine)
                 }
 
             }
@@ -151,15 +157,20 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
             groupCells.forEach { group ->
 
                 if(group.contains(cellPossition)){
-                    adapter?.pertinentCells?.addAll(group)
+                    adapter.pertinentCells.addAll(group)
                 }
 
             }
 
-            adapter?.notifyDataSetChanged()
+            if(hiddenValues.contains(cellPossition as Int)){
+                displaySudokuMatrix[cellPossition] = adapter.currentSetValue
+            }
+
+            adapter.notifyDataSetChanged()
+
 
         }
-        debugCorrectCells.text = adapter?.correctCells.toString()
+        debugCorrectCells.text = adapter.correctCells.toString()
 
         val numberOfColumns = 9
         val gridLayoutManager = object : GridLayoutManager(activity, numberOfColumns){ override fun canScrollVertically(): Boolean { return false } }
@@ -184,7 +195,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
             var newNumberFound = false
             while (!newNumberFound){
 
-                val randomInteger = (0..SUDOKU_SIZE).shuffled().first()
+                val randomInteger = (0..80).shuffled().first()
 
                 if(!hiddenValues.contains(randomInteger)){
                     hiddenValues.add(randomInteger)
@@ -206,6 +217,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
         //Initialise sudokuMatrix
         sudokuMatrix.addAll(10..90)
+
 
         // insert real values any value above 9 is not a valid value
         var hardResetTries = 0
@@ -319,6 +331,9 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
 
         }
+
+
+        displaySudokuMatrix.addAll(sudokuMatrix)
 
     }
 }

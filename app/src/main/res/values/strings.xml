@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Sodoku</string>
     <string name="game_title">Kotlin Sodoku</string>
-    <string name="set_dificulty">Set dificulty</string>
+    <string name="set_dificulty">Set difficulty</string>
     <string name="start">Start</string>
     <string name="hard">Hard</string>
     <string name="easy">Easy</string>
-    <string name="sudoku_completed">Sudoku Completed</string>
+    <string name="sudoku_completed">Sudoku Completed \n\nTe amo mi bella flor</string>
     <string name="finish">Finish</string>
 </resources>

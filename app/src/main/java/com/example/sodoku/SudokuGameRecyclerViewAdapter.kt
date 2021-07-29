@@ -17,6 +17,7 @@ import kotlinx.android.synthetic.main.cell_layout.view.*
 
 class SudokuGameRecyclerViewAdapter(
     private val sudokuValues: MutableList<Int>,
+    private val displaySudokuMatrix: MutableList<Int>,
     val hiddenValues: MutableList<Int>,
     val width: Int,
     val height: Int,
@@ -26,7 +27,7 @@ class SudokuGameRecyclerViewAdapter(
 
     val pertinentCells: MutableList<Int> = mutableListOf()
     var correctCells =  0
-    var currentSetValue = 0
+    var currentSetValue = -1
     lateinit var context: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         context = parent.context
@@ -45,25 +46,30 @@ class SudokuGameRecyclerViewAdapter(
         holder.cellRoot.layoutParams = params
 
 
-        if(!hiddenValues.contains(position)){
-            holder.cellValue.text = sudokuValues[position].toString()
+        if(hiddenValues.contains(position)){
+            holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.teal_200))
+        }
+        if((1..9).contains(displaySudokuMatrix[position])){
+            holder.cellValue.text = displaySudokuMatrix[position].toString()
         }else{
             holder.cellValue.text = ""
-            //holder.cellRoot.backgroundTintList = ContextCompat.getColorStateList(context, R.color.design_default_color_error)
-            holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.design_default_color_error))
         }
 
-        //checkCorrectValue(currentSetValue.toString(), holder.cellValue.text.toString(),position)
+
 
         holder.cellRoot.setOnClickListener{
 
-
-            checkCorrectValue(holder.cellValue.text.toString(), currentSetValue.toString(),position)
-            holder.cellValue.text = currentSetValue.toString()
-
+            if(hiddenValues.contains(position)){
+                checkCorrectValue(holder.cellValue.text.toString(), currentSetValue.toString(),position)
+            }
             cellClick(position)
 
         }
+
+        holder.cellBorderStart.visibility = View.GONE
+        holder.cellBorderEnd.visibility = View.GONE
+        holder.cellBorderTop.visibility = View.GONE
+        holder.cellBorderBottom.visibility = View.GONE
 
         //Show extra borders if needed
         //show extra topBorder
