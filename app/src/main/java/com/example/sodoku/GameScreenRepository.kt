@@ -42,6 +42,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     private var hiddenValues: MutableList<Int> = hideSudokuValues()
     private val displaySudokuMatrix: MutableList<Int> = mutableListOf()
     private lateinit var adapter: SudokuGameRecyclerViewAdapter
+    private lateinit var gameCompletedCl : ConstraintLayout
 
     val horizontalCells = mutableListOf(
         mutableListOf(0,1,2,3,4,5,6,7,8),
@@ -89,12 +90,12 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     override fun setUI(
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
-        gameCompletedCl: ConstraintLayout,
+        gameCompletedCL: ConstraintLayout,
         valuesLl1: LinearLayout,
         valuesLl2: LinearLayout
     ) {
-
-        setSudokuGameRecyclerViewAdapter(sudokuRV, debugCorrectCells, gameCompletedCl, valuesLl1, valuesLl2)
+        gameCompletedCl = gameCompletedCL
+        setSudokuGameRecyclerViewAdapter(sudokuRV, debugCorrectCells, valuesLl1, valuesLl2)
 
     }
 
@@ -102,9 +103,12 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
         adapter.currentSetValue = currentValue
         if(hiddenValues.contains(selectedCell )){
 
-            adapter.checkCorrectValue(displaySudokuMatrix[selectedCell].toString() , adapter.currentSetValue.toString(),currentValue)
+            adapter.checkCorrectValue(displaySudokuMatrix[selectedCell].toString() , adapter.currentSetValue.toString(),selectedCell)
             displaySudokuMatrix[selectedCell] = adapter.currentSetValue
             adapter.notifyDataSetChanged()
+            if(adapter.correctCells >= SUDOKU_SIZE){
+                gameCompletedCl.visibility = View.VISIBLE
+            }
         }
 
     }
@@ -119,7 +123,6 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     private fun setSudokuGameRecyclerViewAdapter(
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
-        gameCompletedCl: ConstraintLayout,
         valuesLl1: LinearLayout,
         valuesLl2: LinearLayout
     ) {
@@ -141,9 +144,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
             adapter.pertinentCells.clear()
             debugCorrectCells.text = adapter.correctCells.toString()
-            if(adapter.correctCells >= SUDOKU_SIZE){
-                gameCompletedCl.visibility = View.VISIBLE
-            }
+
 
             selectedCell = cellPossition as Int
 
