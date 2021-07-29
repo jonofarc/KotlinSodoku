@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_game_screen.view.*
 import kotlinx.android.synthetic.main.cell_layout.view.*
 
 
@@ -45,17 +46,19 @@ class SudokuGameRecyclerViewAdapter(
             holder.cellValue.text = sudokuValues[position].toString()
         }else{
             holder.cellValue.text = ""
-            holder.cellRoot.backgroundTintList = ContextCompat.getColorStateList(context, R.color.design_default_color_error)
+            //holder.cellRoot.backgroundTintList = ContextCompat.getColorStateList(context, R.color.design_default_color_error)
+            holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.design_default_color_error))
         }
 
         checkCorrectValue(currentSetValue.toString(), holder.cellValue.text.toString(),position)
 
         holder.cellRoot.setOnClickListener{
 
-            cellClick(position)
+
             checkCorrectValue(holder.cellValue.text.toString(), currentSetValue.toString(),position)
             holder.cellValue.text = currentSetValue.toString()
 
+            cellClick(position)
 
         }
 
@@ -70,13 +73,13 @@ class SudokuGameRecyclerViewAdapter(
         if(newValue == sudokuValues[position].toString()){
             correctCells++
         }
+
     }
 
 
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var cellValue: TextView = v.cellValue
         var cellRoot: ConstraintLayout = v.cellRoot
-
 
     }
 

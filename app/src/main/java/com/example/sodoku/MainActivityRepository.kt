@@ -23,7 +23,7 @@ class MainActivityImpl(private val activity: Activity) : MainActivityRepository 
 
     override fun startGame() {
         val intent = Intent(activity, GameScreenActivity::class.java)
-        intent.putExtra(GameScreenActivity.GAME_DIFICULTY, difficultyLvl)
+        intent.putExtra(GameScreenActivity.GAME_DIFFICULTY, difficultyLvl)
         activity.startActivity(intent)
     }
 

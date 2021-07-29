@@ -5,4 +5,6 @@
     <string name="start">Start</string>
     <string name="hard">Hard</string>
     <string name="easy">Easy</string>
+    <string name="sudoku_completed">Sudoku Completed</string>
+    <string name="finish">Finish</string>
 </resources>
