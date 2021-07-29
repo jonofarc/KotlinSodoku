@@ -34,12 +34,12 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     private val SUDOKU_SIZE = 81
     private var difficultyLvl = 1
     private val sudokuMatrix: MutableList<Int> = mutableListOf()
-    private var adapter: SudokuGameRecyclerViewAdapter? = null
+    private lateinit var adapter: SudokuGameRecyclerViewAdapter
 
     val horizontalCells = mutableListOf(
         mutableListOf(0,1,2,3,4,5,6,7,8),
         mutableListOf(9,10,11,12,13,14,15,16,17),
-        mutableListOf(18,19,20,21,2,23,24,25,26),
+        mutableListOf(18,19,20,21,22,23,24,25,26),
         mutableListOf(27,28,29,30,31,32,33,34,35),
         mutableListOf(36,37,38,39,40,41,42,43,44),
         mutableListOf(45,46,47,48,49,50,51,52,53),
@@ -116,11 +116,48 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
         adapter = SudokuGameRecyclerViewAdapter(sudokuMatrix, hiddenValues,(width).toInt(), (width).toInt()){ cellPossition ->
 
-
+            adapter?.pertinentCells?.clear()
             debugCorrectCells.text = adapter?.correctCells.toString()
             if(adapter?.correctCells ?: 0 >= SUDOKU_SIZE){
                 gameCompletedCl.visibility = View.VISIBLE
             }
+
+            // set color to pertinent cell for selected cell
+
+            //horizontal check
+            horizontalCells.forEach { horizontalLine ->
+
+                if(horizontalLine.contains(cellPossition)){
+                    adapter?.pertinentCells?.addAll(horizontalLine)
+                }
+
+            }
+
+
+
+            // vertical check
+
+            verticalCells.forEach { verticalLine ->
+
+                if(verticalLine.contains(cellPossition)){
+                    adapter?.pertinentCells?.addAll(verticalLine)
+                }
+
+            }
+
+
+            //groupCheck
+
+            groupCells.forEach { group ->
+
+                if(group.contains(cellPossition)){
+                    adapter?.pertinentCells?.addAll(group)
+                }
+
+            }
+
+            adapter?.notifyDataSetChanged()
+
         }
         debugCorrectCells.text = adapter?.correctCells.toString()
 
@@ -130,6 +167,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
         sudokuRV.layoutManager = gridLayoutManager
         sudokuRV.adapter = adapter
+        adapter.correctCells = 81-difficultyLvl
 
 
 

@@ -2,6 +2,7 @@ package com.example.sodoku
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,6 +23,8 @@ class SudokuGameRecyclerViewAdapter(
     val cellClick: (Any) -> Unit
 ) : RecyclerView.Adapter<SudokuGameRecyclerViewAdapter.ViewHolder>() {
 
+
+    val pertinentCells: MutableList<Int> = mutableListOf()
     var correctCells =  0
     var currentSetValue = 0
     lateinit var context: Context
@@ -50,7 +53,7 @@ class SudokuGameRecyclerViewAdapter(
             holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.design_default_color_error))
         }
 
-        checkCorrectValue(currentSetValue.toString(), holder.cellValue.text.toString(),position)
+        //checkCorrectValue(currentSetValue.toString(), holder.cellValue.text.toString(),position)
 
         holder.cellRoot.setOnClickListener{
 
@@ -60,6 +63,33 @@ class SudokuGameRecyclerViewAdapter(
 
             cellClick(position)
 
+        }
+
+        //Show extra borders if needed
+        //show extra topBorder
+        if((27..35).contains(position) || (54..62).contains(position)){
+            holder.cellBorderTop.visibility = View.VISIBLE
+        }
+        //show extra BottomBorder
+        if((18..26).contains(position) || (45..53).contains(position)){
+            holder.cellBorderBottom.visibility = View.VISIBLE
+        }
+        //show extra StartBorder
+        val startBorders = listOf(3,12,21,30,39,48,57,66,75,6,15,24,33,42,51,60,69,78)
+        if(startBorders.contains(position)){
+            holder.cellBorderStart.visibility = View.VISIBLE
+        }
+        //show extra EndBorder
+        val endBorders = listOf(2,11,20,29,38,47,56,65,74,5,14,23,32,41,52,59,68,77)
+        if(endBorders.contains(position)){
+            holder.cellBorderEnd.visibility = View.VISIBLE
+        }
+
+        if(pertinentCells.contains(position)){
+
+            holder.cellValue.setBackgroundColor(Color.LTGRAY)
+        }else{
+            holder.cellValue.setBackgroundColor(Color.TRANSPARENT)
         }
 
     }
@@ -80,6 +110,11 @@ class SudokuGameRecyclerViewAdapter(
     class ViewHolder(v: View) : RecyclerView.ViewHolder(v) {
         var cellValue: TextView = v.cellValue
         var cellRoot: ConstraintLayout = v.cellRoot
+
+        var cellBorderTop : View = v.cellBorderTop
+        var cellBorderBottom : View = v.cellBorderBottom
+        var cellBorderStart : View = v.cellBorderStart
+        var cellBorderEnd : View = v.cellBorderEnd
 
     }
 
