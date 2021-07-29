@@ -9,9 +9,11 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_game_screen.*
 
 
 interface GameScreenRepository {
@@ -20,7 +22,9 @@ interface GameScreenRepository {
     fun setUI(
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
-        gameCompletedCl: ConstraintLayout
+        gameCompletedCl: ConstraintLayout,
+        valuesLl1: LinearLayout,
+        valuesLl2: LinearLayout
     )
     fun setCurrentValue(i: Int)
     fun setValuesColor(valuesLl1: LinearLayout, colorStateList: ColorStateList?)
@@ -83,10 +87,12 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     override fun setUI(
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
-        gameCompletedCl: ConstraintLayout
+        gameCompletedCl: ConstraintLayout,
+        valuesLl1: LinearLayout,
+        valuesLl2: LinearLayout
     ) {
 
-        setSudokuGameRecyclerViewAdapter(sudokuRV, debugCorrectCells, gameCompletedCl)
+        setSudokuGameRecyclerViewAdapter(sudokuRV, debugCorrectCells, gameCompletedCl, valuesLl1, valuesLl2)
 
     }
 
@@ -104,7 +110,9 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     private fun setSudokuGameRecyclerViewAdapter(
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
-        gameCompletedCl: ConstraintLayout
+        gameCompletedCl: ConstraintLayout,
+        valuesLl1: LinearLayout,
+        valuesLl2: LinearLayout
     ) {
         sudokuRV.setHasFixedSize(true)
 
@@ -167,6 +175,9 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
             }
 
             adapter.notifyDataSetChanged()
+            adapter.currentSetValue = -1
+            setValuesColor(valuesLl1, ContextCompat.getColorStateList(activity, R.color.gray))
+            setValuesColor(valuesLl2, ContextCompat.getColorStateList(activity, R.color.gray))
 
 
         }

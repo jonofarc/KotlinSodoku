@@ -234,6 +234,20 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+            <Button
+                android:backgroundTint="@color/gray"
+                android:id="@+id/selectedValue10"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:text="Delete"
+                android:textColor="@color/black"
+                app:autoSizeMaxTextSize="9sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintTop_toTopOf="parent" />
 
 
 
@@ -242,7 +256,7 @@
     </LinearLayout>
 
     <TextView
-        android:visibility="gone"
+        android:textColor="@color/white"
         android:id="@+id/debugCorrectCells"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

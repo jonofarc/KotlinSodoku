@@ -36,7 +36,7 @@ class GameScreenActivity : AppCompatActivity() {
         gameScreenRepository.setLvl()
 
 
-        gameScreenRepository.setUI(sudokuRV, debugCorrectCells, gameCompletedCl)
+        gameScreenRepository.setUI(sudokuRV, debugCorrectCells, gameCompletedCl, valuesLl1, valuesLl2)
 
         selectedValue1.setOnClickListener {
             gameScreenRepository.setCurrentValue(1)
@@ -88,6 +88,12 @@ class GameScreenActivity : AppCompatActivity() {
         }
         selectedValue9.setOnClickListener {
             gameScreenRepository.setCurrentValue(9)
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+        }
+        selectedValue10.setOnClickListener {
+            gameScreenRepository.setCurrentValue(-1)
             gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
             gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
