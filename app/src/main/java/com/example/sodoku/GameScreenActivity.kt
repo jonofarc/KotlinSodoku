@@ -40,56 +40,56 @@ class GameScreenActivity : AppCompatActivity() {
 
         selectedValue1.setOnClickListener {
             gameScreenRepository.setCurrentValue(1)
-            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.black))
-            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.black))
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
         }
         selectedValue2.setOnClickListener {
             gameScreenRepository.setCurrentValue(2)
-            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.black))
-            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.black))
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
         }
         selectedValue3.setOnClickListener {
             gameScreenRepository.setCurrentValue(3)
-            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.black))
-            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.black))
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
         }
         selectedValue4.setOnClickListener {
             gameScreenRepository.setCurrentValue(4)
-            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.black))
-            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.black))
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
         }
         selectedValue5.setOnClickListener {
             gameScreenRepository.setCurrentValue(5)
-            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.black))
-            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.black))
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
         }
         selectedValue6.setOnClickListener {
             gameScreenRepository.setCurrentValue(6)
-            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.black))
-            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.black))
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
         }
         selectedValue7.setOnClickListener {
             gameScreenRepository.setCurrentValue(7)
-            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.black))
-            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.black))
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
         }
         selectedValue8.setOnClickListener {
             gameScreenRepository.setCurrentValue(8)
-            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.black))
-            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.black))
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
         }
         selectedValue9.setOnClickListener {
             gameScreenRepository.setCurrentValue(9)
-            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.black))
-            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.black))
+            gameScreenRepository.setValuesColor(valuesLl1,ContextCompat.getColorStateList(activity, R.color.gray))
+            gameScreenRepository.setValuesColor(valuesLl2,ContextCompat.getColorStateList(activity, R.color.gray))
             it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
         }
 

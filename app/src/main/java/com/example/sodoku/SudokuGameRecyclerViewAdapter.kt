@@ -48,6 +48,8 @@ class SudokuGameRecyclerViewAdapter(
 
         if(hiddenValues.contains(position)){
             holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.teal_200))
+        }else{
+            holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.white))
         }
         if((1..9).contains(displaySudokuMatrix[position])){
             holder.cellValue.text = displaySudokuMatrix[position].toString()
@@ -94,8 +96,9 @@ class SudokuGameRecyclerViewAdapter(
         if(pertinentCells.contains(position)){
 
             holder.cellValue.setBackgroundColor(Color.LTGRAY)
+            holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.black))
         }else{
-            holder.cellValue.setBackgroundColor(Color.TRANSPARENT)
+            holder.cellValue.setBackgroundColor(Color.BLACK)
         }
 
     }
