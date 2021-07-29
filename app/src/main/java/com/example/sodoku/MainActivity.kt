@@ -17,9 +17,9 @@ class MainActivity : AppCompatActivity() {
 
         val mainActivityRepository = MainActivityImpl(this@MainActivity)
 
-        dificultyValue.text = "45"
+        dificultyValue.text = "1"
         dificultySb.max = 81
-        dificultySb.min = 45
+        dificultySb.min = 1
 
 
         dificultySb.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {

@@ -3,7 +3,9 @@ package com.example.sodoku
 import android.app.Activity
 import android.util.DisplayMetrics
 import android.util.Log
+import android.widget.Button
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -11,7 +13,18 @@ import androidx.recyclerview.widget.RecyclerView
 interface GameScreenRepository {
 
     fun setLvl()
-    fun setUI(sudokuRV: RecyclerView)
+    fun setUI(
+        sudokuRV: RecyclerView,
+        selectedValue1: Button,
+        selectedValue2: Button,
+        selectedValue3: Button,
+        selectedValue4: Button,
+        selectedValue5: Button,
+        selectedValue6: Button,
+        selectedValue7: Button,
+        selectedValue8: Button,
+        selectedValue9: Button
+    )
 }
 
 class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
@@ -21,7 +34,8 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
     }
 
     private var difficultyLvl = 1
-    val sudokuMatrix: MutableList<Int> = mutableListOf()
+    private val sudokuMatrix: MutableList<Int> = mutableListOf()
+    lateinit var adapter: SudokuGameRecyclerViewAdapter
 
     val horizontalCells = mutableListOf(
         mutableListOf(0,1,2,3,4,5,6,7,8),
@@ -66,9 +80,160 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
         createSudokuMatrix()
     }
 
-    override fun setUI(sudokuRV: RecyclerView) {
+    override fun setUI(
+        sudokuRV: RecyclerView,
+        selectedValue1: Button,
+        selectedValue2: Button,
+        selectedValue3: Button,
+        selectedValue4: Button,
+        selectedValue5: Button,
+        selectedValue6: Button,
+        selectedValue7: Button,
+        selectedValue8: Button,
+        selectedValue9: Button
+    ) {
 
         setSudokuGameRecyclerViewAdapter(sudokuRV)
+        setSelectedValues(
+            selectedValue1,
+            selectedValue2,
+            selectedValue3,
+            selectedValue4,
+            selectedValue5,
+            selectedValue6,
+            selectedValue7,
+            selectedValue8,
+            selectedValue9)
+
+    }
+
+    private fun setSelectedValues(
+        selectedValue1: Button,
+        selectedValue2: Button,
+        selectedValue3: Button,
+        selectedValue4: Button,
+        selectedValue5: Button,
+        selectedValue6: Button,
+        selectedValue7: Button,
+        selectedValue8: Button,
+        selectedValue9: Button
+    ) {
+        selectedValue1.setOnClickListener {
+            adapter.currentSetValue = 1
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+            selectedValue2.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue3.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue4.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue5.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue6.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue7.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue8.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue9.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+        }
+
+        selectedValue2.setOnClickListener {
+            adapter.currentSetValue = 2
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+            selectedValue1.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue3.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue4.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue5.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue6.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue7.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue8.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue9.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+        }
+
+        selectedValue3.setOnClickListener {
+            adapter.currentSetValue = 3
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+            selectedValue1.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue2.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue4.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue5.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue6.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue7.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue8.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue9.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+        }
+
+        selectedValue4.setOnClickListener {
+            adapter.currentSetValue = 4
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+            selectedValue1.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue2.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue3.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue5.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue6.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue7.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue8.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue9.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+        }
+
+        selectedValue5.setOnClickListener {
+            adapter.currentSetValue = 5
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+            selectedValue1.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue2.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue3.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue4.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue6.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue7.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue8.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue9.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+        }
+
+        selectedValue6.setOnClickListener {
+            adapter.currentSetValue = 6
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+            selectedValue1.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue2.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue3.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue4.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue5.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue7.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue8.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue9.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+        }
+
+        selectedValue7.setOnClickListener {
+            adapter.currentSetValue = 7
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+            selectedValue1.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue2.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue3.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue4.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue5.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue6.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue8.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue9.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+        }
+
+        selectedValue8.setOnClickListener {
+            adapter.currentSetValue = 8
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+            selectedValue1.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue2.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue3.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue4.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue5.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue6.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue7.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue9.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+        }
+
+        selectedValue9.setOnClickListener {
+            adapter.currentSetValue = 9
+            it.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.teal_200)
+            selectedValue1.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue2.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue3.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue4.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue5.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue6.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue7.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+            selectedValue8.backgroundTintList = ContextCompat.getColorStateList(activity, R.color.black)
+        }
 
     }
 
@@ -81,11 +246,19 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
 
         val width = displayMetrics.widthPixels*0.9
 
-        val hiddenValues = hideSudokuValues(sudokuMatrix)
+        val hiddenValues = hideSudokuValues()
 
-        val adapter = SudokuGameRecyclerViewAdapter(sudokuMatrix, hiddenValues,(width).toInt(), (width).toInt()){ cellPossition ->
+        adapter = SudokuGameRecyclerViewAdapter(sudokuMatrix, hiddenValues,(width).toInt(), (width).toInt()){ cellPossition ->
             Toast.makeText(activity, "$cellPossition", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(activity, "correctCells: ${adapter.correctCells}", Toast.LENGTH_SHORT).show()
+            if(adapter.correctCells >= 81){
+                Toast.makeText(activity, "GAME WON!!!!", Toast.LENGTH_SHORT).show()
+            }
         }
+
+        //adapter.correctCells = 81-difficultyLvl
+
 
 
         val numberOfColumns = 9
@@ -99,7 +272,7 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
 
     }
 
-    private fun hideSudokuValues(sudokuMatrix: MutableList<Int>): MutableList<Int> {
+    private fun hideSudokuValues(): MutableList<Int> {
 
         val hiddenValues = mutableListOf<Int>()
 
@@ -127,7 +300,7 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
         return hiddenValues
     }
 
-
+    //this could probably be its own class to be reusable
     private fun createSudokuMatrix() {
 
         //Initialise sudokuMatrix
@@ -187,8 +360,6 @@ class GameScreenImpl(private val activity: Activity) : GameScreenRepository {
                 }
 
                 //groupCheck
-
-                // vertical check
 
                 groupCells.forEach { group ->
 

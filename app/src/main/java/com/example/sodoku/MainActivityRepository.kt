@@ -14,7 +14,7 @@ interface MainActivityRepository {
 class MainActivityImpl(private val activity: Activity) : MainActivityRepository {
 
 
-    var difficultyLvl = 45
+    var difficultyLvl = 1
 
     override fun setDificultyLvl(lvl: Int) {
         difficultyLvl = lvl
