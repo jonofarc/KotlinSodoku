@@ -37,7 +37,6 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
     }
     private val SUDOKU_SIZE = 81
     private var difficultyLvl = 1
-    private var selectedCell = -1
     private val sudokuMatrix: MutableList<Int> = mutableListOf()
     private var hiddenValues: MutableList<Int> = hideSudokuValues()
     private val displaySudokuMatrix: MutableList<Int> = mutableListOf()
@@ -101,10 +100,10 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
 
     override fun setCurrentValue(currentValue: Int) {
         adapter.currentSetValue = currentValue
-        if(hiddenValues.contains(selectedCell )){
+        if(hiddenValues.contains(adapter.selectedCell )){
 
-            adapter.checkCorrectValue(displaySudokuMatrix[selectedCell].toString() , adapter.currentSetValue.toString(),selectedCell)
-            displaySudokuMatrix[selectedCell] = adapter.currentSetValue
+            adapter.checkCorrectValue(displaySudokuMatrix[adapter.selectedCell].toString() , adapter.currentSetValue.toString(),adapter.selectedCell)
+            displaySudokuMatrix[adapter.selectedCell] = adapter.currentSetValue
             adapter.notifyDataSetChanged()
             if(adapter.correctCells >= SUDOKU_SIZE){
                 gameCompletedCl.visibility = View.VISIBLE
@@ -146,7 +145,7 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
             debugCorrectCells.text = adapter.correctCells.toString()
 
 
-            selectedCell = cellPossition as Int
+            adapter.selectedCell = cellPossition as Int
 
             // set color to pertinent cell for selected cell
 

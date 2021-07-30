@@ -27,6 +27,7 @@ class SudokuGameRecyclerViewAdapter(
 
     val pertinentCells: MutableList<Int> = mutableListOf()
     var correctCells =  0
+    var selectedCell =  -1
     var currentSetValue = -1
     lateinit var context: Context
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -107,6 +108,15 @@ class SudokuGameRecyclerViewAdapter(
         }else{
             holder.cellValue.setBackgroundColor(Color.BLACK)
         }
+
+
+        //highlight all selected cells numbers (ex: if a 2 is selcted highlight all the number 2)
+        if((0..80).contains(selectedCell)){
+            if(displaySudokuMatrix[selectedCell]  == displaySudokuMatrix [position]){
+                holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.blue))
+            }
+        }
+
 
     }
 
