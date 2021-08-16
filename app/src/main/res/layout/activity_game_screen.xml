@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/gameScreenCL"
     android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -266,6 +267,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+    <ImageView
+        android:id="@+id/gameScreenSettingsIv"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_settings_applications_black_24dp"
+        app:layout_constraintEnd_toStartOf="@+id/verticalGl4"
+        app:layout_constraintTop_toBottomOf="@+id/debugCorrectCells"
+        app:tint="@color/gray" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:visibility="gone"
         android:id="@+id/gameCompletedCl"
@@ -294,6 +304,80 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:visibility="visible"
+        android:id="@+id/settingsCL"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/gameScreenSettingsIv2"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/ic_settings_applications_black_24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/gray" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/gameScreenSettingsIv2">
+
+            <LinearLayout
+                android:id="@+id/BackGroundLL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/background_color"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/backGroundColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/background_color"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/backGroundColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

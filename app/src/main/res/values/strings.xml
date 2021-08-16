@@ -7,4 +7,6 @@
     <string name="easy">Easy</string>
     <string name="sudoku_completed">Sudoku Completed \n\nTe Amo Mi Bella Flor</string>
     <string name="finish">Finish</string>
+    <string name="apply">Apply</string>
+    <string name="background_color">BackGround Color</string>
 </resources>

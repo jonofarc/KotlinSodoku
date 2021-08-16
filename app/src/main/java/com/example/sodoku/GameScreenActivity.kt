@@ -1,8 +1,12 @@
 package com.example.sodoku
 
 import android.app.Activity
+import android.content.res.ColorStateList
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_game_screen.*
@@ -34,7 +38,6 @@ class GameScreenActivity : AppCompatActivity() {
 
         val gameScreenRepository = GameScreenImpl(activity)
         gameScreenRepository.setLvl()
-
 
         gameScreenRepository.setUI(sudokuRV, debugCorrectCells, gameCompletedCl, valuesLl1, valuesLl2)
 
@@ -103,6 +106,40 @@ class GameScreenActivity : AppCompatActivity() {
             finish()
         }
 
+        gameScreenSettingsIv.setOnClickListener {
+            settingsCL.visibility = View.VISIBLE
+        }
+
+        gameScreenSettingsIv2.setOnClickListener {
+            settingsCL.visibility = View.GONE
+        }
+
+        backGroundColorBtn.setOnClickListener {
+            Utils.setPreferenceValue(Utils.backGroundColorPrefString, backGroundColorEt.text.toString())
+        }
+
+    }
+
+    private fun setColors() {
+
+        val backgroundColor = Utils.getPreferenceValue(Utils.backGroundColorPrefString)
+        if(backgroundColor.isNotEmpty()){
+            try {
+                val savedColor = ColorStateList.valueOf(Color.parseColor(backgroundColor))
+                gameScreenCL.backgroundTintList = savedColor
+
+            }catch (e: Error){
+                Log.d(GameScreenImpl.TAG, "problem getting background color: $e")
+            }
+
+        }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setColors()
     }
 
 

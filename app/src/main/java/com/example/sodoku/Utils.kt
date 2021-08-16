@@ -1,16 +1,24 @@
 package com.example.sodoku
 
 import android.app.Activity
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.ContentFrameLayout
+import android.content.SharedPreferences
+
 
 object Utils {
 
 
     private const val SPINNER_REMOVAL_MAX_TRIES = 50
+    private val PREFS_NAME = "sudoku_preferences"
+
+    var sharedPreferences: SharedPreferences? = null
+    val backGroundColorPrefString ="backGroundColor"
+
 
     @JvmStatic
     //function to add spiner to whole screen
@@ -55,6 +63,21 @@ object Utils {
         if (spinner != null && tries < SPINNER_REMOVAL_MAX_TRIES) {
             removeSpinner(root, tries)
         }
+    }
+
+    fun initSharedPreferences(context: Context){
+        sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    }
+
+    fun getPreferenceValue(preferenceSting: String): String {
+
+        return sharedPreferences?.getString(preferenceSting, "") ?: ""
+    }
+
+    fun setPreferenceValue(preferenceString: String, preferenceValue: String) {
+        val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
+        editor?.putString(preferenceString, preferenceValue)
+        editor?.apply()
     }
 
 
