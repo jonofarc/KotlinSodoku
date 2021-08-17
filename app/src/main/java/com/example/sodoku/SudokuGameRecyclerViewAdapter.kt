@@ -53,19 +53,9 @@ class SudokuGameRecyclerViewAdapter(
 
         if (hiddenValues.contains(position)) {
             if (displaySudokuMatrix[position] == sudokuValues[position]) {
-                holder.cellValue.setTextColor(
-                    ContextCompat.getColorStateList(
-                        context,
-                        R.color.teal_200
-                    )
-                )
+                holder.cellValue.setTextColor(ColorUtils.selectedValuesColor)
             } else {
-                holder.cellValue.setTextColor(
-                    ContextCompat.getColorStateList(
-                        context,
-                        R.color.design_default_color_error
-                    )
-                )
+                holder.cellValue.setTextColor(ColorUtils.userInputsTextColor)
             }
 
         } else {
@@ -129,12 +119,7 @@ class SudokuGameRecyclerViewAdapter(
         //highlight all selected cells numbers (ex: if a 2 is selcted highlight all the number 2)
         if ((0..80).contains(selectedCell)) {
             if (displaySudokuMatrix[selectedCell] == displaySudokuMatrix[position]) {
-                holder.cellValue.setTextColor(
-                    ContextCompat.getColorStateList(
-                        context,
-                        R.color.blue
-                    )
-                )
+                holder.cellValue.setTextColor(ColorUtils.selectedValuesColor)
             }
         }
 

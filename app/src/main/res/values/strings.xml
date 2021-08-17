@@ -14,4 +14,6 @@
     <string name="button_color">Button Color</string>
     <string name="button_text_color">Button text color</string>
     <string name="pertinent_cell_background">Pertinent Cell Background</string>
+    <string name="selected_values_text_color">Selected values text color</string>
+    <string name="user_inputs_text">User Inputs Text</string>
 </resources>

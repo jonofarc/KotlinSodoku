@@ -146,6 +146,21 @@ class GameScreenActivity : AppCompatActivity() {
             setColors()
         }
 
+        selectedValuesTextColorBtn.setOnClickListener {
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.selectedValuesColorPrefString,
+                selectedValuesTextColorEt.text.toString()
+            )
+            setColors()
+        }
+
+        userInputsTextColorBtn.setOnClickListener {
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.userInputsTextColorPrefString,
+                userInputsTextColorEt.text.toString()
+            )
+            setColors()
+        }
 
         //set saved colors
         setColors()
@@ -171,6 +186,12 @@ class GameScreenActivity : AppCompatActivity() {
 
         //pertinent cell background
         pertinentCellBackGroundColorPreviewV.setBackgroundColor(ColorUtils.pertinentCellBackGroundColor)
+
+        //selected value text cell
+        selectedValuesTextColorPreviewV.setBackgroundColor(ColorUtils.selectedValuesColor)
+
+        //selected value text cell
+        userInputsTextColorPreviewV.setBackgroundColor(ColorUtils.userInputsTextColor)
 
 
         //update elements inside sudoku Matrix

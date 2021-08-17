@@ -548,6 +548,73 @@
                     android:layout_height="64dp"
                     android:background="@color/black" />
 
+                <!-- selected values text settings-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/selected_values_text_color"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/selectedValuesTextColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/selected_values_text_color"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/selectedValuesTextColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply" />
+
+                <View
+                    android:id="@+id/selectedValuesTextColorPreviewV"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
+
+                <!-- user inputs text settings-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/user_inputs_text"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userInputsTextColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/user_inputs_text"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/userInputsTextColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply" />
+
+                <View
+                    android:id="@+id/userInputsTextColorPreviewV"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
+
+
             </LinearLayout>
 
         </ScrollView>

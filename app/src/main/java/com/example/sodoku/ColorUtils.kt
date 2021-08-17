@@ -14,6 +14,8 @@ object ColorUtils {
     const val pertinentCellBackGroundColorPrefString = "pertinentCellBackGround"
     const val buttonColorPrefString = "ButtonColorPrefString"
     const val buttonTextColorPrefString = "ButtonTextColorPrefString"
+    const val selectedValuesColorPrefString = "SelectedValuesColorPrefString"
+    const val userInputsTextColorPrefString = "UserInputsTextColorPrefString"
 
 
     var backGroundColor = Color.parseColor("#000000")
@@ -22,19 +24,19 @@ object ColorUtils {
     var pertinentCellBackGroundColor = Color.parseColor("#CDCDCD")
     var buttonsColor = Color.parseColor("#CDCDCD")
     var buttonsTextColor = Color.parseColor("#000000")
+    var selectedValuesColor = Color.parseColor("#2694A6")
+    var userInputsTextColor = Color.parseColor("#D6050D")
 
     fun updateColors() {
 
-        val savedBackgroundColor =
-            SharedPreferencesUtils.getPreferenceValue(backGroundColorPrefString)
+        val savedBackgroundColor = SharedPreferencesUtils.getPreferenceValue(backGroundColorPrefString)
         val savedTextColor = SharedPreferencesUtils.getPreferenceValue(textColorPrefString)
-        val savedCellBackGroundColor =
-            SharedPreferencesUtils.getPreferenceValue(cellBackGroundColorPrefString)
-        val savedPertinentCellBackGroundColor =
-            SharedPreferencesUtils.getPreferenceValue(pertinentCellBackGroundColorPrefString)
+        val savedCellBackGroundColor = SharedPreferencesUtils.getPreferenceValue(cellBackGroundColorPrefString)
+        val savedPertinentCellBackGroundColor = SharedPreferencesUtils.getPreferenceValue(pertinentCellBackGroundColorPrefString)
         val savedButtonColor = SharedPreferencesUtils.getPreferenceValue(buttonColorPrefString)
-        val savedButtonTextColor =
-            SharedPreferencesUtils.getPreferenceValue(buttonTextColorPrefString)
+        val savedButtonTextColor = SharedPreferencesUtils.getPreferenceValue(buttonTextColorPrefString)
+        val savedSelectedValuesColor = SharedPreferencesUtils.getPreferenceValue(selectedValuesColorPrefString)
+        val savedUserInputsTextColor = SharedPreferencesUtils.getPreferenceValue(userInputsTextColorPrefString)
 
         //backGround Color
         if (savedBackgroundColor.matches(validColorRegEx)) {
@@ -107,6 +109,31 @@ object ColorUtils {
             }
 
         }
+
+        // selected values color
+        if (savedSelectedValuesColor.matches(validColorRegEx)) {
+            try {
+                val savedColor = Color.parseColor(savedSelectedValuesColor)
+                selectedValuesColor = savedColor
+
+            } catch (e: Error) {
+                Log.d(GameScreenImpl.TAG, "problem getting selected value text color: $e")
+            }
+
+        }
+
+        // user inputs text values color
+        if (savedUserInputsTextColor.matches(validColorRegEx)) {
+            try {
+                val savedColor = Color.parseColor(savedUserInputsTextColor)
+                userInputsTextColor = savedColor
+
+            } catch (e: Error) {
+                Log.d(GameScreenImpl.TAG, "problem getting selected value text color: $e")
+            }
+
+        }
+
     }
 
 }
