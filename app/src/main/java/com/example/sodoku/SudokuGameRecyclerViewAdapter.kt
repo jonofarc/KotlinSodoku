@@ -11,6 +11,7 @@ import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.activity_game_screen.*
 import kotlinx.android.synthetic.main.activity_game_screen.view.*
 import kotlinx.android.synthetic.main.cell_layout.view.*
 
@@ -45,6 +46,7 @@ class SudokuGameRecyclerViewAdapter(
         params.height = height/9
         params.width = width/9
         holder.cellRoot.layoutParams = params
+
 
 
         if(hiddenValues.contains(position)){
@@ -99,14 +101,16 @@ class SudokuGameRecyclerViewAdapter(
 
         if(pertinentCells.contains(position)){
 
-            holder.cellValue.setBackgroundColor(Color.LTGRAY)
+           holder.cellValue.setBackgroundColor( ColorUtils.pertinentCellBackGroundColor)
+           // holder.cellValue.backgroundTintList = ColorUtils.pertinentCellBackGroundColor
 
             if(!hiddenValues.contains(position)){
                 holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.black))
             }
 
         }else{
-            holder.cellValue.setBackgroundColor(Color.BLACK)
+            holder.cellValue.setBackgroundColor(ColorUtils.cellBackGroundColor)
+           // holder.cellValue.backgroundTintList = ColorUtils.cellBackGroundColor
         }
 
 
