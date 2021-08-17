@@ -55,7 +55,7 @@ class SudokuGameRecyclerViewAdapter(
             }
 
         }else{
-            holder.cellValue.setTextColor(ContextCompat.getColorStateList(context, R.color.white))
+            holder.cellValue.setTextColor(ColorUtils.textColor)
         }
         if((1..9).contains(displaySudokuMatrix[position])){
             holder.cellValue.text = displaySudokuMatrix[position].toString()

@@ -12,9 +12,14 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_game_screen.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import android.widget.LinearLayout
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+
 
 class GameScreenActivity : AppCompatActivity() {
     private val activity:Activity = this@GameScreenActivity
+    lateinit var gameScreenRepository : GameScreenImpl
 
     companion object {
         val GAME_DIFFICULTY =
@@ -36,7 +41,7 @@ class GameScreenActivity : AppCompatActivity() {
 
     private fun setUI() {
 
-        val gameScreenRepository = GameScreenImpl(activity)
+        gameScreenRepository = GameScreenImpl(activity)
         gameScreenRepository.setLvl()
 
         gameScreenRepository.setUI(sudokuRV, debugCorrectCells, gameCompletedCl, valuesLl1, valuesLl2)
@@ -120,6 +125,11 @@ class GameScreenActivity : AppCompatActivity() {
             setColors()
         }
 
+        textColorBtn.setOnClickListener {
+            SharedPreferencesUtils.setColorPreferenceValue(ColorUtils.textColorPrefString, textColorEt.text.toString())
+            setColors()
+        }
+
 
         //set saved colors
         setColors()
@@ -131,8 +141,14 @@ class GameScreenActivity : AppCompatActivity() {
         ColorUtils.updateColors()
 
         //apply colors
+
+        //backGround
         gameScreenCL.backgroundTintList = ColorUtils.backGroundColor
         backGroundColorPreviewV.backgroundTintList = ColorUtils.backGroundColor
+
+        //sudoku Text
+        gameScreenRepository.notifyDataSetChanged()
+        textColorPreviewV.backgroundTintList = ColorUtils.textColor
 
 
     }

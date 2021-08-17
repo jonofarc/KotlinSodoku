@@ -343,6 +343,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
+                <!-- Background settings-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -371,6 +372,39 @@
 
                 <View
                     android:id="@+id/backGroundColorPreviewV"
+                    android:background="@color/black"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"/>
+
+                <!-- text settings-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/text_color"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/textColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/text_color"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/textColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply" />
+
+                <View
+                    android:id="@+id/textColorPreviewV"
                     android:background="@color/black"
                     android:layout_width="64dp"
                     android:layout_height="64dp"/>

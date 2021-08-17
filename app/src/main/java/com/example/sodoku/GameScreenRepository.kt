@@ -28,6 +28,7 @@ interface GameScreenRepository {
     )
     fun setCurrentValue(i: Int)
     fun setValuesColor(valuesLl1: LinearLayout, colorStateList: ColorStateList?)
+    fun notifyDataSetChanged()
 }
 
 class GameScreenImpl( val activity: Activity) : GameScreenRepository {
@@ -116,6 +117,10 @@ class GameScreenImpl( val activity: Activity) : GameScreenRepository {
         ll.children.forEach {
             it.backgroundTintList = color
         }
+    }
+
+    override fun notifyDataSetChanged() {
+        adapter.notifyDataSetChanged()
     }
 
 

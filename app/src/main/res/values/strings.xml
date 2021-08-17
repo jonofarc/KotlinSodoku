@@ -9,4 +9,5 @@
     <string name="finish">Finish</string>
     <string name="apply">Apply</string>
     <string name="background_color">BackGround Color</string>
+    <string name="text_color">Text Color</string>
 </resources>
