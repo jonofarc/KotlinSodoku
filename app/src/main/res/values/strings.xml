@@ -17,4 +17,5 @@
     <string name="selected_values_text_color">Selected values text color</string>
     <string name="user_inputs_text">User Inputs Text</string>
     <string name="sudoku_border_color">Sudoku Border color</string>
+    <string name="cell_border_color">Cell Border Color</string>
 </resources>

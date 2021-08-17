@@ -48,6 +48,7 @@ class SudokuGameRecyclerViewAdapter(
         params.height = height / 9
         params.width = width / 9
         holder.cellRoot.layoutParams = params
+        holder.cellRoot.setBackgroundColor(ColorUtils.cellBorderColor)
 
 
 

@@ -17,6 +17,7 @@ object ColorUtils {
     const val selectedValuesColorPrefString = "SelectedValuesColorPrefString"
     const val userInputsTextColorPrefString = "UserInputsTextColorPrefString"
     const val sudokuBorderColorPrefString = "SudokuBorderColorPrefString"
+    const val cellBorderColorPrefString = "cellBorderColorPrefString"
 
 
     var backGroundColor = Color.parseColor("#000000")
@@ -28,6 +29,7 @@ object ColorUtils {
     var selectedValuesColor = Color.parseColor("#2694A6")
     var userInputsTextColor = Color.parseColor("#D6050D")
     var sudokuBorderColor = Color.parseColor("#FFBB86FC")
+    var cellBorderColor = Color.parseColor("#FFFFFF")
 
     fun updateColors() {
 
@@ -40,6 +42,7 @@ object ColorUtils {
         val savedSelectedValuesColor = SharedPreferencesUtils.getPreferenceValue(selectedValuesColorPrefString)
         val savedUserInputsTextColor = SharedPreferencesUtils.getPreferenceValue(userInputsTextColorPrefString)
         val savedSudokuBorderColor = SharedPreferencesUtils.getPreferenceValue(sudokuBorderColorPrefString)
+        val savedCellBorderColor = SharedPreferencesUtils.getPreferenceValue(cellBorderColorPrefString)
 
         //backGround Color
         if (savedBackgroundColor.matches(validColorRegEx)) {
@@ -137,14 +140,26 @@ object ColorUtils {
 
         }
 
-        // user inputs text values color
+        // sudoku border color
         if (savedSudokuBorderColor.matches(validColorRegEx)) {
             try {
                 val savedColor = Color.parseColor(savedSudokuBorderColor)
                 sudokuBorderColor = savedColor
 
             } catch (e: Error) {
-                Log.d(GameScreenImpl.TAG, "problem getting sudoky border color: $e")
+                Log.d(GameScreenImpl.TAG, "problem getting sudoku border color: $e")
+            }
+
+        }
+
+        // cell border color
+        if (savedCellBorderColor.matches(validColorRegEx)) {
+            try {
+                val savedColor = Color.parseColor(savedCellBorderColor)
+                cellBorderColor = savedColor
+
+            } catch (e: Error) {
+                Log.d(GameScreenImpl.TAG, "problem getting cell border color: $e")
             }
 
         }
