@@ -334,6 +334,7 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
+            android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -343,6 +344,8 @@
                 android:id="@+id/BackGroundLL"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
 
@@ -610,6 +613,39 @@
 
                 <View
                     android:id="@+id/userInputsTextColorPreviewV"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
+
+                <!-- sudoku Borders-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/sudoku_border_color"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/sudokuBorderColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/sudoku_border_color"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/sudokuBorderColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply" />
+
+                <View
+                    android:id="@+id/sudokuBorderColorPreviewV"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@color/black" />

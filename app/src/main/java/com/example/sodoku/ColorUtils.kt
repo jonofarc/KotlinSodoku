@@ -16,6 +16,7 @@ object ColorUtils {
     const val buttonTextColorPrefString = "ButtonTextColorPrefString"
     const val selectedValuesColorPrefString = "SelectedValuesColorPrefString"
     const val userInputsTextColorPrefString = "UserInputsTextColorPrefString"
+    const val sudokuBorderColorPrefString = "SudokuBorderColorPrefString"
 
 
     var backGroundColor = Color.parseColor("#000000")
@@ -26,6 +27,7 @@ object ColorUtils {
     var buttonsTextColor = Color.parseColor("#000000")
     var selectedValuesColor = Color.parseColor("#2694A6")
     var userInputsTextColor = Color.parseColor("#D6050D")
+    var sudokuBorderColor = Color.parseColor("#FFBB86FC")
 
     fun updateColors() {
 
@@ -37,6 +39,7 @@ object ColorUtils {
         val savedButtonTextColor = SharedPreferencesUtils.getPreferenceValue(buttonTextColorPrefString)
         val savedSelectedValuesColor = SharedPreferencesUtils.getPreferenceValue(selectedValuesColorPrefString)
         val savedUserInputsTextColor = SharedPreferencesUtils.getPreferenceValue(userInputsTextColorPrefString)
+        val savedSudokuBorderColor = SharedPreferencesUtils.getPreferenceValue(sudokuBorderColorPrefString)
 
         //backGround Color
         if (savedBackgroundColor.matches(validColorRegEx)) {
@@ -129,7 +132,19 @@ object ColorUtils {
                 userInputsTextColor = savedColor
 
             } catch (e: Error) {
-                Log.d(GameScreenImpl.TAG, "problem getting selected value text color: $e")
+                Log.d(GameScreenImpl.TAG, "problem getting user inputs text color: $e")
+            }
+
+        }
+
+        // user inputs text values color
+        if (savedSudokuBorderColor.matches(validColorRegEx)) {
+            try {
+                val savedColor = Color.parseColor(savedSudokuBorderColor)
+                sudokuBorderColor = savedColor
+
+            } catch (e: Error) {
+                Log.d(GameScreenImpl.TAG, "problem getting sudoky border color: $e")
             }
 
         }

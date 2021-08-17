@@ -75,6 +75,11 @@ class SudokuGameRecyclerViewAdapter(
             cellClick(position)
 
         }
+        holder.cellBorderStart.setBackgroundColor(ColorUtils.sudokuBorderColor)
+        holder.cellBorderEnd.setBackgroundColor(ColorUtils.sudokuBorderColor)
+        holder.cellBorderTop.setBackgroundColor(ColorUtils.sudokuBorderColor)
+        holder.cellBorderBottom.setBackgroundColor(ColorUtils.sudokuBorderColor)
+
 
         holder.cellBorderStart.visibility = View.GONE
         holder.cellBorderEnd.visibility = View.GONE

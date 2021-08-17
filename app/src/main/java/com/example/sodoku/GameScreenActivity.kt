@@ -162,6 +162,14 @@ class GameScreenActivity : AppCompatActivity() {
             setColors()
         }
 
+        sudokuBorderColorBtn.setOnClickListener {
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.sudokuBorderColorPrefString,
+                sudokuBorderColorEt.text.toString()
+            )
+            setColors()
+        }
+
         //set saved colors
         setColors()
 
@@ -193,6 +201,8 @@ class GameScreenActivity : AppCompatActivity() {
         //selected value text cell
         userInputsTextColorPreviewV.setBackgroundColor(ColorUtils.userInputsTextColor)
 
+        //sudoku border
+        sudokuBorderColorPreviewV.setBackgroundColor(ColorUtils.sudokuBorderColor)
 
         //update elements inside sudoku Matrix
         gameScreenRepository.notifyDataSetChanged()
