@@ -369,6 +369,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/apply" />
 
+                <View
+                    android:id="@+id/backGroundColorPreviewV"
+                    android:background="@color/black"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"/>
+
             </LinearLayout>
 
         </ScrollView>

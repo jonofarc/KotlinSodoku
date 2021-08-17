@@ -8,16 +8,22 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.ContentFrameLayout
 import android.content.SharedPreferences
+import android.content.res.ColorStateList
+import android.graphics.Color
+import android.util.Log
+import kotlinx.android.synthetic.main.activity_game_screen.*
+import android.view.animation.TranslateAnimation
+
+
+
 
 
 object Utils {
 
 
     private const val SPINNER_REMOVAL_MAX_TRIES = 50
-    private val PREFS_NAME = "sudoku_preferences"
 
     var sharedPreferences: SharedPreferences? = null
-    val backGroundColorPrefString ="backGroundColor"
 
 
     @JvmStatic
@@ -51,8 +57,8 @@ object Utils {
         }))
     }
 
-    private fun removeSpinner(root: ViewGroup, tries: Int = 0) {
-        var tries = tries
+    private fun removeSpinner(root: ViewGroup, recivingTries: Int = 0) {
+        var tries = recivingTries
         var spinner = root.findViewById<RelativeLayout>(R.id.generic_spinner)
         tries++
         if (spinner != null) {
@@ -65,20 +71,23 @@ object Utils {
         }
     }
 
-    fun initSharedPreferences(context: Context){
-        sharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
+    fun openAnimated(view: View){
+        view.visibility = View.VISIBLE
+        val animate = TranslateAnimation(0F, 0F, view.height.toFloat(), 0F )
+        animate.duration = 500
+        view.startAnimation(animate)
     }
 
-    fun getPreferenceValue(preferenceSting: String): String {
+    fun closeAnimated(view: View){
+        view.visibility = View.GONE
+        val animate = TranslateAnimation(0F, 0F, 0F, view.height.toFloat())
+        animate.duration = 500
+        view.startAnimation(animate)
 
-        return sharedPreferences?.getString(preferenceSting, "") ?: ""
     }
 
-    fun setPreferenceValue(preferenceString: String, preferenceValue: String) {
-        val editor: SharedPreferences.Editor? = sharedPreferences?.edit()
-        editor?.putString(preferenceString, preferenceValue)
-        editor?.apply()
-    }
+
+
 
 
 }

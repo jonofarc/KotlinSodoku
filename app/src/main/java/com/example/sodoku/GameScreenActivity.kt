@@ -107,39 +107,38 @@ class GameScreenActivity : AppCompatActivity() {
         }
 
         gameScreenSettingsIv.setOnClickListener {
-            settingsCL.visibility = View.VISIBLE
+            Utils.openAnimated(settingsCL)
         }
 
         gameScreenSettingsIv2.setOnClickListener {
+            Utils.closeAnimated(settingsCL)
             settingsCL.visibility = View.GONE
         }
 
         backGroundColorBtn.setOnClickListener {
-            Utils.setPreferenceValue(Utils.backGroundColorPrefString, backGroundColorEt.text.toString())
+            SharedPreferencesUtils.setColorPreferenceValue(ColorUtils.backGroundColorPrefString, backGroundColorEt.text.toString())
+            setColors()
         }
+
+
+        //set saved colors
+        setColors()
 
     }
 
     private fun setColors() {
+        //update colors if they exist from shared preferences
+        ColorUtils.updateColors()
 
-        val backgroundColor = Utils.getPreferenceValue(Utils.backGroundColorPrefString)
-        if(backgroundColor.isNotEmpty()){
-            try {
-                val savedColor = ColorStateList.valueOf(Color.parseColor(backgroundColor))
-                gameScreenCL.backgroundTintList = savedColor
-
-            }catch (e: Error){
-                Log.d(GameScreenImpl.TAG, "problem getting background color: $e")
-            }
-
-        }
+        //apply colors
+        gameScreenCL.backgroundTintList = ColorUtils.backGroundColor
+        backGroundColorPreviewV.backgroundTintList = ColorUtils.backGroundColor
 
 
     }
 
     override fun onResume() {
         super.onResume()
-        setColors()
     }
 
 

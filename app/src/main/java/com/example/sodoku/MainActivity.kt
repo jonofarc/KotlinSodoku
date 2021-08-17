@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity() {
         dificultySb.max = 81
         dificultySb.min = 1
 
-        Utils.initSharedPreferences(this@MainActivity)
+        SharedPreferencesUtils.initSharedPreferences(this@MainActivity)
 
         dificultySb.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             override fun onStopTrackingTouch(seekBar: SeekBar) {
