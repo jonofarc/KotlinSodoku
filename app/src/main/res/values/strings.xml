@@ -10,4 +10,8 @@
     <string name="apply">Apply</string>
     <string name="background_color">BackGround Color</string>
     <string name="text_color">Text Color</string>
+    <string name="cell_background">Cell background</string>
+    <string name="button_color">Button Color</string>
+    <string name="button_text_color">Button text color</string>
+    <string name="pertinent_cell_background">Pertinent Cell Background</string>
 </resources>

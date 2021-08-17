@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_game_screen.*
@@ -14,12 +15,13 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.children
 import androidx.recyclerview.widget.RecyclerView
 
 
 class GameScreenActivity : AppCompatActivity() {
-    private val activity:Activity = this@GameScreenActivity
-    lateinit var gameScreenRepository : GameScreenImpl
+    private val activity: Activity = this@GameScreenActivity
+    lateinit var gameScreenRepository: GameScreenImpl
 
     companion object {
         val GAME_DIFFICULTY =
@@ -44,7 +46,13 @@ class GameScreenActivity : AppCompatActivity() {
         gameScreenRepository = GameScreenImpl(activity)
         gameScreenRepository.setLvl()
 
-        gameScreenRepository.setUI(sudokuRV, debugCorrectCells, gameCompletedCl, valuesLl1, valuesLl2)
+        gameScreenRepository.setUI(
+            sudokuRV,
+            debugCorrectCells,
+            gameCompletedCl,
+            valuesLl1,
+            valuesLl2
+        )
 
         selectedValue1.setOnClickListener {
             gameScreenRepository.setCurrentValue(1)
@@ -91,17 +99,50 @@ class GameScreenActivity : AppCompatActivity() {
         }
 
         backGroundColorBtn.setOnClickListener {
-            SharedPreferencesUtils.setColorPreferenceValue(ColorUtils.backGroundColorPrefString, backGroundColorEt.text.toString())
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.backGroundColorPrefString,
+                backGroundColorEt.text.toString()
+            )
             setColors()
         }
 
         textColorBtn.setOnClickListener {
-            SharedPreferencesUtils.setColorPreferenceValue(ColorUtils.textColorPrefString, textColorEt.text.toString())
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.textColorPrefString,
+                textColorEt.text.toString()
+            )
             setColors()
         }
 
         cellBackGroundColorBtn.setOnClickListener {
-            SharedPreferencesUtils.setColorPreferenceValue(ColorUtils.cellBackGroundColorPrefString, cellBackGroundColorEt.text.toString())
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.cellBackGroundColorPrefString,
+                cellBackGroundColorEt.text.toString()
+            )
+            setColors()
+        }
+
+        pertinentCellBackGroundColorBtn.setOnClickListener {
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.pertinentCellBackGroundColorPrefString,
+                pertinentCellBackGroundColorEt.text.toString()
+            )
+            setColors()
+        }
+
+        buttonsColorBtn.setOnClickListener {
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.buttonColorPrefString,
+                buttonsColorEt.text.toString()
+            )
+            setColors()
+        }
+
+        buttonsTextColorBtn.setOnClickListener {
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.buttonTextColorPrefString,
+                buttonsTextColorEt.text.toString()
+            )
             setColors()
         }
 
@@ -119,7 +160,8 @@ class GameScreenActivity : AppCompatActivity() {
 
         //backGround
         gameScreenCL.setBackgroundColor(ColorUtils.backGroundColor)
-        backGroundColorPreviewV.backgroundTintList = ColorStateList.valueOf(ColorUtils.backGroundColor)
+        backGroundColorPreviewV.backgroundTintList =
+            ColorStateList.valueOf(ColorUtils.backGroundColor)
 
         //sudoku Text
         textColorPreviewV.setBackgroundColor(ColorUtils.textColor)
@@ -127,9 +169,31 @@ class GameScreenActivity : AppCompatActivity() {
         //cell background
         cellBackGroundColorPreviewV.setBackgroundColor(ColorUtils.cellBackGroundColor)
 
+        //pertinent cell background
+        pertinentCellBackGroundColorPreviewV.setBackgroundColor(ColorUtils.pertinentCellBackGroundColor)
+
 
         //update elements inside sudoku Matrix
         gameScreenRepository.notifyDataSetChanged()
+
+        //button color
+        valuesLl1.children.forEach {
+            it.setBackgroundColor(ColorUtils.buttonsColor)
+        }
+        valuesLl2.children.forEach {
+            it.setBackgroundColor(ColorUtils.buttonsColor)
+        }
+        buttonsColorPreviewV.setBackgroundColor(ColorUtils.buttonsColor)
+
+        //button text color
+        valuesLl1.children.forEach {
+            (it as Button).setTextColor(ColorUtils.buttonsTextColor)
+        }
+        valuesLl2.children.forEach {
+            (it as Button).setTextColor(ColorUtils.buttonsTextColor)
+        }
+        buttonsTextColorPreviewV.setBackgroundColor(ColorUtils.buttonsTextColor)
+
 
     }
 

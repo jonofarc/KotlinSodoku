@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/gameScreenCL"
-    android:background="@color/black"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".GameScreenActivity">
 
 
@@ -59,7 +59,6 @@
         app:layout_constraintGuide_percent="0.6" />
 
 
-
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontalGl4"
         android:layout_width="wrap_content"
@@ -78,10 +77,10 @@
 
 
     <LinearLayout
-        android:orientation="vertical"
-        android:weightSum="100"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:orientation="vertical"
+        android:weightSum="100"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/verticalGl4"
         app:layout_constraintStart_toStartOf="@+id/verticalGl3"
@@ -89,18 +88,18 @@
 
         <LinearLayout
             android:id="@+id/valuesLl1"
-            android:orientation="horizontal"
-            android:weightSum="100"
-            android:layout_weight="50"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_weight="50"
+            android:orientation="horizontal"
+            android:weightSum="100">
 
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="1"
@@ -109,12 +108,13 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="2"
@@ -123,12 +123,13 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="3"
@@ -137,12 +138,13 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="4"
@@ -151,12 +153,13 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="5"
@@ -171,20 +174,20 @@
 
         <LinearLayout
             android:id="@+id/valuesLl2"
-            android:gravity="center"
-            android:layout_gravity="center"
-            android:orientation="horizontal"
-            android:weightSum="100"
-            android:layout_weight="50"
             android:layout_width="match_parent"
-            android:layout_height="0dp">
+            android:layout_height="0dp"
+            android:layout_gravity="center"
+            android:layout_weight="50"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="100">
 
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue6"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="6"
@@ -193,12 +196,13 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue7"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="7"
@@ -207,12 +211,13 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue8"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="8"
@@ -221,12 +226,13 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue9"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="9"
@@ -235,12 +241,13 @@
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <Button
-                android:backgroundTint="@color/gray"
                 android:id="@+id/selectedValue10"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
+                android:backgroundTint="@color/gray"
                 android:elevation="8dp"
                 android:gravity="center"
                 android:text="Delete"
@@ -251,18 +258,17 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
 
-
         </LinearLayout>
 
     </LinearLayout>
 
     <TextView
-        android:textColor="@color/white"
         android:id="@+id/debugCorrectCells"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="TextView"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toStartOf="@+id/verticalGl4"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -277,11 +283,11 @@
         app:tint="@color/gray" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="gone"
         android:id="@+id/gameCompletedCl"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#AA000000">
+        android:background="#AA000000"
+        android:visibility="gone">
 
         <TextView
             android:id="@+id/textView2"
@@ -308,11 +314,11 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:visibility="visible"
         android:id="@+id/settingsCL"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF">
+        android:background="#FFFFFF"
+        android:visibility="visible">
 
         <ImageView
             android:id="@+id/gameScreenSettingsIv2"
@@ -372,9 +378,9 @@
 
                 <View
                     android:id="@+id/backGroundColorPreviewV"
-                    android:background="@color/black"
                     android:layout_width="64dp"
-                    android:layout_height="64dp"/>
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
 
                 <!-- text settings-->
                 <TextView
@@ -405,18 +411,18 @@
 
                 <View
                     android:id="@+id/textColorPreviewV"
-                    android:background="@color/black"
                     android:layout_width="64dp"
-                    android:layout_height="64dp"/>
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
 
-                <!-- cel background settings-->
+                <!-- cell background settings-->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="32dp"
                     android:layout_marginEnd="16dp"
-                    android:text="@string/text_color"
+                    android:text="@string/cell_background"
                     android:textColor="@color/black" />
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -426,7 +432,7 @@
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
-                    android:hint="@string/text_color"
+                    android:hint="@string/cell_background"
                     android:minHeight="48dp"
                     android:textColor="@color/black" />
 
@@ -438,18 +444,113 @@
 
                 <View
                     android:id="@+id/cellBackGroundColorPreviewV"
-                    android:background="@color/black"
                     android:layout_width="64dp"
-                    android:layout_height="64dp"/>
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
+
+                <!-- pertinent cell background settings-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/pertinent_cell_background"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pertinentCellBackGroundColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/pertinent_cell_background"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/pertinentCellBackGroundColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply" />
+
+                <View
+                    android:id="@+id/pertinentCellBackGroundColorPreviewV"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
+
+
+                <!-- buttons background settings-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/button_color"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/buttonsColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/button_color"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/buttonsColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply" />
+
+                <View
+                    android:id="@+id/buttonsColorPreviewV"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
+
+                <!-- buttons text settings-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/button_text_color"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/buttonsTextColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/button_text_color"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/buttonsTextColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply" />
+
+                <View
+                    android:id="@+id/buttonsTextColorPreviewV"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
 
             </LinearLayout>
 
         </ScrollView>
-
-
-
-
-
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
