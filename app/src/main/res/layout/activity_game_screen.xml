@@ -90,11 +90,12 @@
             android:id="@+id/valuesLl1"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="50"
+            android:layout_weight="40"
             android:orientation="horizontal"
-            android:weightSum="100">
+            android:weightSum="180">
 
             <Button
+                android:padding="4dp"
                 android:id="@+id/selectedValue1"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -104,12 +105,13 @@
                 android:gravity="center"
                 android:text="1"
                 android:textColor="@color/black"
-                app:autoSizeMaxTextSize="99sp"
+                app:autoSizeMaxTextSize="24sp"
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
+                android:padding="4dp"
                 android:id="@+id/selectedValue2"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -119,12 +121,13 @@
                 android:gravity="center"
                 android:text="2"
                 android:textColor="@color/black"
-                app:autoSizeMaxTextSize="99sp"
+                app:autoSizeMaxTextSize="24sp"
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
+                android:padding="4dp"
                 android:id="@+id/selectedValue3"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -134,12 +137,13 @@
                 android:gravity="center"
                 android:text="3"
                 android:textColor="@color/black"
-                app:autoSizeMaxTextSize="99sp"
+                app:autoSizeMaxTextSize="24sp"
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
+                android:padding="4dp"
                 android:id="@+id/selectedValue4"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -149,12 +153,13 @@
                 android:gravity="center"
                 android:text="4"
                 android:textColor="@color/black"
-                app:autoSizeMaxTextSize="99sp"
+                app:autoSizeMaxTextSize="24sp"
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <Button
+                android:padding="4dp"
                 android:id="@+id/selectedValue5"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -164,10 +169,73 @@
                 android:gravity="center"
                 android:text="5"
                 android:textColor="@color/black"
-                app:autoSizeMaxTextSize="99sp"
+                app:autoSizeMaxTextSize="24sp"
                 app:autoSizeMinTextSize="1sp"
                 app:autoSizeTextType="uniform"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:padding="4dp"
+                android:id="@+id/selectedValue6"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:backgroundTint="@color/gray"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="@color/black"
+                app:autoSizeMaxTextSize="24sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:padding="4dp"
+                android:id="@+id/selectedValue7"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:backgroundTint="@color/gray"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="@color/black"
+                app:autoSizeMaxTextSize="24sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:padding="4dp"
+                android:id="@+id/selectedValue8"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:backgroundTint="@color/gray"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:text="8"
+                android:textColor="@color/black"
+                app:autoSizeMaxTextSize="24sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:padding="4dp"
+                android:id="@+id/selectedValue9"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:backgroundTint="@color/gray"
+                android:elevation="8dp"
+                android:gravity="center"
+                android:text="9"
+                android:textColor="@color/black"
+                app:autoSizeMaxTextSize="24sp"
+                app:autoSizeMinTextSize="1sp"
+                app:autoSizeTextType="uniform" />
 
 
         </LinearLayout>
@@ -182,80 +250,20 @@
             android:orientation="horizontal"
             android:weightSum="100">
 
-            <Button
-                android:id="@+id/selectedValue6"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="20"
-                android:backgroundTint="@color/gray"
-                android:elevation="8dp"
-                android:gravity="center"
-                android:text="6"
-                android:textColor="@color/black"
-                app:autoSizeMaxTextSize="99sp"
-                app:autoSizeMinTextSize="1sp"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintTop_toTopOf="parent" />
+            
 
-            <Button
-                android:id="@+id/selectedValue7"
+            <ImageView
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:id="@+id/deleteSelectedValue"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
-                android:backgroundTint="@color/gray"
+                android:background="#00FFFFFF"
                 android:elevation="8dp"
                 android:gravity="center"
-                android:text="7"
-                android:textColor="@color/black"
-                app:autoSizeMaxTextSize="99sp"
-                app:autoSizeMinTextSize="1sp"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/selectedValue8"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="20"
-                android:backgroundTint="@color/gray"
-                android:elevation="8dp"
-                android:gravity="center"
-                android:text="8"
-                android:textColor="@color/black"
-                app:autoSizeMaxTextSize="99sp"
-                app:autoSizeMinTextSize="1sp"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/selectedValue9"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="20"
-                android:backgroundTint="@color/gray"
-                android:elevation="8dp"
-                android:gravity="center"
-                android:text="9"
-                android:textColor="@color/black"
-                app:autoSizeMaxTextSize="99sp"
-                app:autoSizeMinTextSize="1sp"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <Button
-                android:id="@+id/selectedValue10"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="20"
-                android:backgroundTint="@color/gray"
-                android:elevation="8dp"
-                android:gravity="center"
-                android:text="Delete"
-                android:textColor="@color/black"
-                app:autoSizeMaxTextSize="9sp"
-                app:autoSizeMinTextSize="1sp"
-                app:autoSizeTextType="uniform"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:tint="@color/white"
+                android:src="@drawable/ic_trash_can_outline" />
 
 
         </LinearLayout>
@@ -318,7 +326,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <ImageView
             android:id="@+id/gameScreenSettingsIv2"
@@ -613,6 +621,39 @@
 
                 <View
                     android:id="@+id/userInputsTextColorPreviewV"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@color/black" />
+
+                <!-- user inputs correct text settings-->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/user_inputs_correct_text"
+                    android:textColor="@color/black" />
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/userInputsCorrectTextColorEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:hint="@string/user_inputs_correct_text"
+                    android:minHeight="48dp"
+                    android:textColor="@color/black" />
+
+                <Button
+                    android:id="@+id/userInputsCorrectTextColorBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/apply" />
+
+                <View
+                    android:id="@+id/userInputsCorrectTextColorPreviewV"
                     android:layout_width="64dp"
                     android:layout_height="64dp"
                     android:background="@color/black" />

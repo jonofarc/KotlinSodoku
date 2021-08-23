@@ -3,6 +3,7 @@ package com.example.sodoku
 import android.app.Activity
 import android.content.res.ColorStateList
 import android.graphics.Color
+import android.graphics.ColorFilter
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -81,7 +82,7 @@ class GameScreenActivity : AppCompatActivity() {
         selectedValue9.setOnClickListener {
             gameScreenRepository.setCurrentValue(9)
         }
-        selectedValue10.setOnClickListener {
+        deleteSelectedValue.setOnClickListener {
             gameScreenRepository.setCurrentValue(-1)
         }
 
@@ -98,6 +99,10 @@ class GameScreenActivity : AppCompatActivity() {
             settingsCL.visibility = View.GONE
         }
 
+        //set saved colors
+        setColors()
+
+        //color settings buttons
         backGroundColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
                 ColorUtils.backGroundColorPrefString,
@@ -105,6 +110,7 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        backGroundColorEt.setText(ColorUtils.savedBackgroundColor)
 
         textColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
@@ -113,6 +119,7 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        textColorEt.setText(ColorUtils.savedTextColor)
 
         cellBackGroundColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
@@ -121,6 +128,7 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        cellBackGroundColorEt.setText(ColorUtils.savedCellBackGroundColor)
 
         pertinentCellBackGroundColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
@@ -129,6 +137,8 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        pertinentCellBackGroundColorEt.setText(ColorUtils.savedPertinentCellBackGroundColor)
+
 
         buttonsColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
@@ -137,6 +147,7 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        buttonsColorEt.setText(ColorUtils.savedButtonColor)
 
         buttonsTextColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
@@ -145,6 +156,7 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        buttonsTextColorEt.setText(ColorUtils.savedButtonTextColor)
 
         selectedValuesTextColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
@@ -153,6 +165,7 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        selectedValuesTextColorEt.setText(ColorUtils.savedSelectedValuesColor)
 
         userInputsTextColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
@@ -161,6 +174,16 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        userInputsTextColorEt.setText(ColorUtils.savedUserInputsTextColor)
+
+        userInputsCorrectTextColorBtn.setOnClickListener {
+            SharedPreferencesUtils.setColorPreferenceValue(
+                ColorUtils.userInputsCorrectTextColorPrefString,
+                userInputsCorrectTextColorEt.text.toString()
+            )
+            setColors()
+        }
+        userInputsCorrectTextColorEt.setText(ColorUtils.savedUserInputsCorrectTextColor)
 
         sudokuBorderColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
@@ -169,6 +192,7 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        sudokuBorderColorEt.setText(ColorUtils.savedSudokuBorderColor)
 
         cellBorderColorBtn.setOnClickListener {
             SharedPreferencesUtils.setColorPreferenceValue(
@@ -177,9 +201,9 @@ class GameScreenActivity : AppCompatActivity() {
             )
             setColors()
         }
+        cellBorderColorEt.setText(ColorUtils.savedCellBorderColor)
 
-        //set saved colors
-        setColors()
+
 
     }
 
@@ -206,8 +230,11 @@ class GameScreenActivity : AppCompatActivity() {
         //selected value text cell
         selectedValuesTextColorPreviewV.setBackgroundColor(ColorUtils.selectedValuesColor)
 
-        //selected value text cell
+        //user input text color
         userInputsTextColorPreviewV.setBackgroundColor(ColorUtils.userInputsTextColor)
+
+        //user input correct text color
+        userInputsCorrectTextColorPreviewV.setBackgroundColor(ColorUtils.userInputsCorrectTextColor)
 
         //sudoku border
         sudokuBorderColorPreviewV.setBackgroundColor(ColorUtils.sudokuBorderColor)
@@ -220,20 +247,34 @@ class GameScreenActivity : AppCompatActivity() {
 
         //button color
         valuesLl1.children.forEach {
-            it.setBackgroundColor(ColorUtils.buttonsColor)
+            if(it is Button){
+                it.setBackgroundColor(ColorUtils.buttonsColor)
+            }
         }
         valuesLl2.children.forEach {
-            it.setBackgroundColor(ColorUtils.buttonsColor)
+            if(it is Button){
+                it.setBackgroundColor(ColorUtils.buttonsColor)
+            }
         }
+        //deleteSelectedValue.setBackgroundColor(ColorUtils.buttonsColor)
         buttonsColorPreviewV.setBackgroundColor(ColorUtils.buttonsColor)
+
 
         //button text color
         valuesLl1.children.forEach {
-            (it as Button).setTextColor(ColorUtils.buttonsTextColor)
+            if(it is Button){
+                it.setTextColor(ColorUtils.buttonsTextColor)
+            }
         }
         valuesLl2.children.forEach {
-            (it as Button).setTextColor(ColorUtils.buttonsTextColor)
+            if(it is Button){
+                it.setTextColor(ColorUtils.buttonsTextColor)
+            }
         }
+        deleteSelectedValue.imageTintList = ColorStateList.valueOf(ColorUtils.buttonsTextColor)
+
+
+
         buttonsTextColorPreviewV.setBackgroundColor(ColorUtils.buttonsTextColor)
 
 

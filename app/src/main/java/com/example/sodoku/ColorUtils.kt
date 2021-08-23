@@ -16,6 +16,7 @@ object ColorUtils {
     const val buttonTextColorPrefString = "ButtonTextColorPrefString"
     const val selectedValuesColorPrefString = "SelectedValuesColorPrefString"
     const val userInputsTextColorPrefString = "UserInputsTextColorPrefString"
+    const val userInputsCorrectTextColorPrefString = "userInputsCorrectTextColorPrefString"
     const val sudokuBorderColorPrefString = "SudokuBorderColorPrefString"
     const val cellBorderColorPrefString = "cellBorderColorPrefString"
 
@@ -28,21 +29,36 @@ object ColorUtils {
     var buttonsTextColor = Color.parseColor("#000000")
     var selectedValuesColor = Color.parseColor("#2694A6")
     var userInputsTextColor = Color.parseColor("#D6050D")
+    var userInputsCorrectTextColor = Color.parseColor("#D6050D")
     var sudokuBorderColor = Color.parseColor("#FFBB86FC")
     var cellBorderColor = Color.parseColor("#FFFFFF")
 
+
+    var savedBackgroundColor = ""
+    var savedTextColor = ""
+    var savedCellBackGroundColor = ""
+    var savedPertinentCellBackGroundColor = ""
+    var savedButtonColor = ""
+    var savedButtonTextColor = ""
+    var savedSelectedValuesColor = ""
+    var savedUserInputsTextColor = ""
+    var savedUserInputsCorrectTextColor = ""
+    var savedSudokuBorderColor = ""
+    var savedCellBorderColor = ""
+
     fun updateColors() {
 
-        val savedBackgroundColor = SharedPreferencesUtils.getPreferenceValue(backGroundColorPrefString)
-        val savedTextColor = SharedPreferencesUtils.getPreferenceValue(textColorPrefString)
-        val savedCellBackGroundColor = SharedPreferencesUtils.getPreferenceValue(cellBackGroundColorPrefString)
-        val savedPertinentCellBackGroundColor = SharedPreferencesUtils.getPreferenceValue(pertinentCellBackGroundColorPrefString)
-        val savedButtonColor = SharedPreferencesUtils.getPreferenceValue(buttonColorPrefString)
-        val savedButtonTextColor = SharedPreferencesUtils.getPreferenceValue(buttonTextColorPrefString)
-        val savedSelectedValuesColor = SharedPreferencesUtils.getPreferenceValue(selectedValuesColorPrefString)
-        val savedUserInputsTextColor = SharedPreferencesUtils.getPreferenceValue(userInputsTextColorPrefString)
-        val savedSudokuBorderColor = SharedPreferencesUtils.getPreferenceValue(sudokuBorderColorPrefString)
-        val savedCellBorderColor = SharedPreferencesUtils.getPreferenceValue(cellBorderColorPrefString)
+        savedBackgroundColor = SharedPreferencesUtils.getPreferenceValue(backGroundColorPrefString)
+        savedTextColor = SharedPreferencesUtils.getPreferenceValue(textColorPrefString)
+        savedCellBackGroundColor = SharedPreferencesUtils.getPreferenceValue(cellBackGroundColorPrefString)
+        savedPertinentCellBackGroundColor = SharedPreferencesUtils.getPreferenceValue(pertinentCellBackGroundColorPrefString)
+        savedButtonColor = SharedPreferencesUtils.getPreferenceValue(buttonColorPrefString)
+        savedButtonTextColor = SharedPreferencesUtils.getPreferenceValue(buttonTextColorPrefString)
+        savedSelectedValuesColor = SharedPreferencesUtils.getPreferenceValue(selectedValuesColorPrefString)
+        savedUserInputsTextColor = SharedPreferencesUtils.getPreferenceValue(userInputsTextColorPrefString)
+        savedUserInputsCorrectTextColor = SharedPreferencesUtils.getPreferenceValue(userInputsCorrectTextColorPrefString)
+        savedSudokuBorderColor = SharedPreferencesUtils.getPreferenceValue(sudokuBorderColorPrefString)
+        savedCellBorderColor = SharedPreferencesUtils.getPreferenceValue(cellBorderColorPrefString)
 
         //backGround Color
         if (savedBackgroundColor.matches(validColorRegEx)) {
@@ -133,6 +149,18 @@ object ColorUtils {
             try {
                 val savedColor = Color.parseColor(savedUserInputsTextColor)
                 userInputsTextColor = savedColor
+
+            } catch (e: Error) {
+                Log.d(GameScreenImpl.TAG, "problem getting user inputs text color: $e")
+            }
+
+        }
+
+        // user inputs text values color
+        if (savedUserInputsCorrectTextColor.matches(validColorRegEx)) {
+            try {
+                val savedColor = Color.parseColor(savedUserInputsCorrectTextColor)
+                userInputsCorrectTextColor = savedColor
 
             } catch (e: Error) {
                 Log.d(GameScreenImpl.TAG, "problem getting user inputs text color: $e")

@@ -54,7 +54,7 @@ class SudokuGameRecyclerViewAdapter(
 
         if (hiddenValues.contains(position)) {
             if (displaySudokuMatrix[position] == sudokuValues[position]) {
-                holder.cellValue.setTextColor(ColorUtils.selectedValuesColor)
+                holder.cellValue.setTextColor(ColorUtils.userInputsCorrectTextColor)
             } else {
                 holder.cellValue.setTextColor(ColorUtils.userInputsTextColor)
             }
