@@ -51,7 +51,7 @@ object Utils {
                     val view = LayoutInflater.from(activity).inflate(R.layout.spinner, root)
                 }
                 if (!spin) {
-                    root.postDelayed(Runnable { removeSpinner(root) }, 500)
+                    root.postDelayed(Runnable { removeSpinner(root) }, 2000)
                 }
             }
         }))
