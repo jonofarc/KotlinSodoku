@@ -1,2 +1,2 @@
-rootProject.name = "Sodoku"
+rootProject.name = "Sudoku"
 include ':app'

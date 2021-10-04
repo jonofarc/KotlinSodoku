@@ -1,4 +1,4 @@
-package com.example.sodoku
+package com.example.sudoku
 
 import android.content.res.ColorStateList
 import android.graphics.Color
