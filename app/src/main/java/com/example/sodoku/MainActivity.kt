@@ -3,9 +3,15 @@ package com.example.sodoku
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
+import kotlinx.android.synthetic.main.activity_game_screen.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+
+    private val easyValue = 35
+    private val normalValue = 46
+    private val hardValue = 51
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -35,10 +41,37 @@ class MainActivity : AppCompatActivity() {
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 dificultyValue.text = progress.toString()
                 mainActivityRepository.setDificultyLvl(progress)
+
+                when {
+                    progress > hardValue -> {
+                        dificultyValue.setTextColor(resources.getColor(R.color.red))
+                    }
+                    progress > normalValue -> {
+                        dificultyValue.setTextColor(resources.getColor(R.color.yellow))
+                    }
+                    else -> {
+                        dificultyValue.setTextColor(resources.getColor(R.color.green))
+                    }
+                }
             }
         })
 
         startGameBtn.setOnClickListener {
+            mainActivityRepository.startGame()
+        }
+
+        easyLevelGameBtn.setOnClickListener {
+            mainActivityRepository.setDificultyLvl(easyValue)
+            mainActivityRepository.startGame()
+        }
+
+        normalLevelGameBtn.setOnClickListener {
+            mainActivityRepository.setDificultyLvl(normalValue)
+            mainActivityRepository.startGame()
+        }
+
+        hardLevelGameBtn.setOnClickListener {
+            mainActivityRepository.setDificultyLvl(hardValue)
             mainActivityRepository.startGame()
         }
 
