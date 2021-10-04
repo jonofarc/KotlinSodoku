@@ -50,40 +50,49 @@ class GameScreenActivity : AppCompatActivity() {
         gameScreenRepository.setUI(
             sudokuRV,
             debugCorrectCells,
-            gameCompletedCl,
-            valuesLl1,
-            valuesLl2
+            gameCompletedCl
         )
 
         selectedValue1.setOnClickListener {
             gameScreenRepository.setCurrentValue(1)
+            updateSelectedValues()
         }
         selectedValue2.setOnClickListener {
             gameScreenRepository.setCurrentValue(2)
+            updateSelectedValues()
         }
         selectedValue3.setOnClickListener {
             gameScreenRepository.setCurrentValue(3)
+            updateSelectedValues()
         }
         selectedValue4.setOnClickListener {
             gameScreenRepository.setCurrentValue(4)
+            updateSelectedValues()
         }
         selectedValue5.setOnClickListener {
             gameScreenRepository.setCurrentValue(5)
+            updateSelectedValues()
         }
         selectedValue6.setOnClickListener {
             gameScreenRepository.setCurrentValue(6)
+            updateSelectedValues()
         }
         selectedValue7.setOnClickListener {
             gameScreenRepository.setCurrentValue(7)
+            updateSelectedValues()
         }
         selectedValue8.setOnClickListener {
             gameScreenRepository.setCurrentValue(8)
+            updateSelectedValues()
         }
         selectedValue9.setOnClickListener {
             gameScreenRepository.setCurrentValue(9)
+            updateSelectedValues()
         }
+
         deleteSelectedValue.setOnClickListener {
             gameScreenRepository.setCurrentValue(-1)
+            updateSelectedValues()
         }
 
         finishBtn.setOnClickListener {
@@ -203,8 +212,37 @@ class GameScreenActivity : AppCompatActivity() {
         }
         cellBorderColorEt.setText(ColorUtils.savedCellBorderColor)
 
+        updateSelectedValues()
 
+    }
 
+    //hide or show values button depending if there are more options for them or not (ex: the user already set all the numbers 1 available)
+    private fun updateSelectedValues() {
+        selectedValue1.visibility = View.VISIBLE
+        selectedValue2.visibility = View.VISIBLE
+        selectedValue3.visibility = View.VISIBLE
+        selectedValue4.visibility = View.VISIBLE
+        selectedValue5.visibility = View.VISIBLE
+        selectedValue6.visibility = View.VISIBLE
+        selectedValue7.visibility = View.VISIBLE
+        selectedValue8.visibility = View.VISIBLE
+        selectedValue9.visibility = View.VISIBLE
+
+        gameScreenRepository.updateSelectedValues()
+        gameScreenRepository.answersHideList.forEach {
+
+            when(it){
+                1 -> selectedValue1.visibility = View.INVISIBLE
+                2 -> selectedValue2.visibility = View.INVISIBLE
+                3 -> selectedValue3.visibility = View.INVISIBLE
+                4 -> selectedValue4.visibility = View.INVISIBLE
+                5 -> selectedValue5.visibility = View.INVISIBLE
+                6 -> selectedValue6.visibility = View.INVISIBLE
+                7 -> selectedValue7.visibility = View.INVISIBLE
+                8 -> selectedValue8.visibility = View.INVISIBLE
+                9 -> selectedValue9.visibility = View.INVISIBLE
+            }
+        }
     }
 
     private fun setColors() {

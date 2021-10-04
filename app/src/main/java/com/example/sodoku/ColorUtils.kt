@@ -29,7 +29,7 @@ object ColorUtils {
     var buttonsTextColor = Color.parseColor("#000000")
     var selectedValuesColor = Color.parseColor("#2694A6")
     var userInputsTextColor = Color.parseColor("#D6050D")
-    var userInputsCorrectTextColor = Color.parseColor("#D6050D")
+    var userInputsCorrectTextColor = Color.parseColor("#0DC143")
     var sudokuBorderColor = Color.parseColor("#FFBB86FC")
     var cellBorderColor = Color.parseColor("#FFFFFF")
 

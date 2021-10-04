@@ -253,16 +253,18 @@
             
 
             <ImageView
+
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:id="@+id/deleteSelectedValue"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="20"
-                android:background="#00FFFFFF"
+                android:backgroundTint="@color/gray"
+                android:background="@drawable/border_black_rounded"
                 android:elevation="8dp"
                 android:gravity="center"
-                app:tint="@color/white"
+                app:tint="@color/black"
                 android:src="@drawable/ic_trash_can_outline" />
 
 

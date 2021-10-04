@@ -19,9 +19,9 @@ import kotlinx.android.synthetic.main.cell_layout.view.*
 class SudokuGameRecyclerViewAdapter(
     private val sudokuValues: MutableList<Int>,
     private val displaySudokuMatrix: MutableList<Int>,
-    val hiddenValues: MutableList<Int>,
-    val width: Int,
-    val height: Int,
+    private val hiddenValues: MutableList<Int>,
+    private val width: Int,
+    private val height: Int,
     val cellClick: (Any) -> Unit
 ) : RecyclerView.Adapter<SudokuGameRecyclerViewAdapter.ViewHolder>() {
 
@@ -69,12 +69,8 @@ class SudokuGameRecyclerViewAdapter(
         }
 
 
-
         holder.cellRoot.setOnClickListener {
-
-
             cellClick(position)
-
         }
         holder.cellBorderStart.setBackgroundColor(ColorUtils.sudokuBorderColor)
         holder.cellBorderEnd.setBackgroundColor(ColorUtils.sudokuBorderColor)

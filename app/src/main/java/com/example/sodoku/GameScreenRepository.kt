@@ -1,20 +1,15 @@
 package com.example.sodoku
 
+import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.res.ColorStateList
-import android.graphics.Color
 import android.util.DisplayMetrics
 import android.util.Log
 import android.view.View
-import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
-import androidx.core.view.children
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_game_screen.*
 
 
 interface GameScreenRepository {
@@ -24,12 +19,11 @@ interface GameScreenRepository {
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
         gameCompletedCl: ConstraintLayout,
-        valuesLl1: LinearLayout,
-        valuesLl2: LinearLayout
     )
 
     fun setCurrentValue(i: Int)
     fun notifyDataSetChanged()
+    fun updateSelectedValues()
 }
 
 class GameScreenImpl(val activity: Activity) : GameScreenRepository {
@@ -45,8 +39,9 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
     private val displaySudokuMatrix: MutableList<Int> = mutableListOf()
     private lateinit var adapter: SudokuGameRecyclerViewAdapter
     private lateinit var gameCompletedCl: ConstraintLayout
+    val answersHideList: MutableList<Int> = mutableListOf()
 
-    val horizontalCells = mutableListOf(
+    private val horizontalCells = mutableListOf(
         mutableListOf(0, 1, 2, 3, 4, 5, 6, 7, 8),
         mutableListOf(9, 10, 11, 12, 13, 14, 15, 16, 17),
         mutableListOf(18, 19, 20, 21, 22, 23, 24, 25, 26),
@@ -57,7 +52,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
         mutableListOf(63, 64, 65, 66, 67, 68, 69, 70, 71),
         mutableListOf(72, 73, 74, 75, 76, 77, 78, 79, 80),
     )
-    val verticalCells = mutableListOf(
+    private val verticalCells = mutableListOf(
         mutableListOf(0, 9, 18, 27, 36, 45, 54, 63, 72),
         mutableListOf(1, 10, 19, 28, 37, 46, 55, 64, 73),
         mutableListOf(2, 11, 20, 29, 38, 47, 56, 65, 74),
@@ -69,7 +64,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
         mutableListOf(8, 17, 26, 35, 44, 53, 62, 71, 80),
     )
 
-    val groupCells = mutableListOf(
+    private val groupCells = mutableListOf(
         mutableListOf(0, 1, 2, 9, 10, 11, 18, 19, 20),
         mutableListOf(3, 4, 5, 12, 13, 14, 21, 22, 23),
         mutableListOf(6, 7, 8, 15, 16, 17, 24, 25, 26),
@@ -93,15 +88,14 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
     override fun setUI(
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
-        gameCompletedCL: ConstraintLayout,
-        valuesLl1: LinearLayout,
-        valuesLl2: LinearLayout
+        gameCompletedCl: ConstraintLayout,
     ) {
-        gameCompletedCl = gameCompletedCL
-        setSudokuGameRecyclerViewAdapter(sudokuRV, debugCorrectCells, valuesLl1, valuesLl2)
+        this.gameCompletedCl = gameCompletedCl
+        setSudokuGameRecyclerViewAdapter(sudokuRV, debugCorrectCells)
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun setCurrentValue(currentValue: Int) {
         adapter.currentSetValue = currentValue
         if (hiddenValues.contains(adapter.selectedCell)) {
@@ -120,16 +114,44 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun notifyDataSetChanged() {
         adapter.notifyDataSetChanged()
     }
 
+    //check to know if we have to hide an option as its already completly used
+    override fun updateSelectedValues() {
+        val answersHashMap: HashMap<Int, Int> = HashMap()
 
+        answersHideList.clear()
+        // Scan string and build hash table
+        displaySudokuMatrix.forEach {
+            if (answersHashMap.containsKey(it)) {
+                // increment count corresponding to c
+                answersHashMap[it] = answersHashMap[it]!!+1
+
+            } else {
+                answersHashMap[it] = 1
+            }
+        }
+        answersHashMap.forEach {
+            Log.d("jon", "character occurences "+it.key+" = "+it.value)
+            if(it.value >= 9){
+                answersHideList.add(it.key)
+            }
+
+        }
+
+
+
+
+    }
+
+
+    @SuppressLint("NotifyDataSetChanged")
     private fun setSudokuGameRecyclerViewAdapter(
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
-        valuesLl1: LinearLayout,
-        valuesLl2: LinearLayout
     ) {
         sudokuRV.setHasFixedSize(true)
 
