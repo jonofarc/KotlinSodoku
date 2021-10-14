@@ -144,16 +144,18 @@ class SudokuGameRecyclerViewAdapter(
 
     }
 
-    fun checkCorrectValue(oldValue: String, newValue: String, position: Int) {
-
+    fun checkCorrectValue(oldValue: String, newValue: String, position: Int): Boolean {
+        var correctCell = false
         if (oldValue == sudokuValues[position].toString()) {
             correctCells--
         }
 
         if (newValue == sudokuValues[position].toString()) {
             correctCells++
+            correctCell = true
         }
 
+        return correctCell
     }
 
 

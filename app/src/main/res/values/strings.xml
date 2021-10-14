@@ -21,4 +21,5 @@
     <string name="user_inputs_correct_text">User Correct Inputs Text</string>
     <string name="sudoku_border_color">Sudoku Border color</string>
     <string name="cell_border_color">Cell Border Color</string>
+    <string name="errors">Errors: %1$d</string>
 </resources>

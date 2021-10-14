@@ -2,22 +2,15 @@ package com.example.sudoku
 
 import android.app.Activity
 import android.content.res.ColorStateList
-import android.graphics.Color
-import android.graphics.ColorFilter
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
-import androidx.core.content.ContextCompat
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.children
 import androidx.lifecycle.lifecycleScope
 import kotlinx.android.synthetic.main.activity_game_screen.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import android.widget.LinearLayout
-import android.widget.TextView
-import androidx.core.view.children
-import androidx.recyclerview.widget.RecyclerView
 
 
 class GameScreenActivity : AppCompatActivity() {
@@ -50,7 +43,8 @@ class GameScreenActivity : AppCompatActivity() {
         gameScreenRepository.setUI(
             sudokuRV,
             debugCorrectCells,
-            gameCompletedCl
+            gameCompletedCl,
+            errorsTV
         )
 
         selectedValue1.setOnClickListener {
@@ -258,6 +252,9 @@ class GameScreenActivity : AppCompatActivity() {
 
         //sudoku Text
         textColorPreviewV.setBackgroundColor(ColorUtils.textColor)
+
+        //errors text
+        errorsTV.setTextColor(ColorUtils.textColor)
 
         //cell background
         cellBackGroundColorPreviewV.setBackgroundColor(ColorUtils.cellBackGroundColor)

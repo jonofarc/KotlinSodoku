@@ -19,6 +19,7 @@ interface GameScreenRepository {
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
         gameCompletedCl: ConstraintLayout,
+        errorsTV: TextView,
     )
 
     fun setCurrentValue(i: Int)
@@ -40,6 +41,8 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
     private lateinit var adapter: SudokuGameRecyclerViewAdapter
     private lateinit var gameCompletedCl: ConstraintLayout
     val answersHideList: MutableList<Int> = mutableListOf()
+    private var errors = 0
+    private var errorsTV : TextView? = null
 
     private val horizontalCells = mutableListOf(
         mutableListOf(0, 1, 2, 3, 4, 5, 6, 7, 8),
@@ -78,9 +81,9 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
 
     override fun setLvl() {
 
-        val dificultyLvlExtra =
+        val difficultyLvlExtra =
             activity.intent.extras?.getInt(GameScreenActivity.GAME_DIFFICULTY, 1) ?: 1
-        difficultyLvl = dificultyLvlExtra
+        difficultyLvl = difficultyLvlExtra
         Toast.makeText(activity, "Difficulty set to $difficultyLvl", Toast.LENGTH_SHORT).show()
         createSudokuMatrix()
     }
@@ -89,10 +92,11 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
         gameCompletedCl: ConstraintLayout,
+        mErrorsTV: TextView,
     ) {
         this.gameCompletedCl = gameCompletedCl
         setSudokuGameRecyclerViewAdapter(sudokuRV, debugCorrectCells)
-
+        errorsTV = mErrorsTV
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -100,11 +104,16 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
         adapter.currentSetValue = currentValue
         if (hiddenValues.contains(adapter.selectedCell)) {
 
-            adapter.checkCorrectValue(
+            val correctValue = adapter.checkCorrectValue(
                 displaySudokuMatrix[adapter.selectedCell].toString(),
                 adapter.currentSetValue.toString(),
                 adapter.selectedCell
             )
+            if(!correctValue){
+                errors++
+
+                errorsTV?.text = activity.getString(R.string.errors, errors)
+            }
             displaySudokuMatrix[adapter.selectedCell] = adapter.currentSetValue
             adapter.notifyDataSetChanged()
             if (adapter.correctCells >= SUDOKU_SIZE) {
@@ -119,7 +128,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
         adapter.notifyDataSetChanged()
     }
 
-    //check to know if we have to hide an option as its already completly used
+    //check to know if we have to hide an option as its already completely used
     override fun updateSelectedValues() {
         val answersHashMap: HashMap<Int, Int> = HashMap()
 
@@ -135,7 +144,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
             }
         }
         answersHashMap.forEach {
-            Log.d("jon", "character occurences "+it.key+" = "+it.value)
+            Log.d("jon", "character occurrences "+it.key+" = "+it.value)
             if(it.value >= 9){
                 answersHideList.add(it.key)
             }
@@ -173,20 +182,19 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
             hiddenValues,
             (width).toInt(),
             (width).toInt()
-        ) { cellPossition ->
+        ) { cellPosition ->
 
             adapter.pertinentCells.clear()
             debugCorrectCells.text = adapter.correctCells.toString()
 
-
-            adapter.selectedCell = cellPossition as Int
+            adapter.selectedCell = cellPosition as Int
 
             // set color to pertinent cell for selected cell
 
             //horizontal check
             horizontalCells.forEach { horizontalLine ->
 
-                if (horizontalLine.contains(cellPossition)) {
+                if (horizontalLine.contains(cellPosition)) {
                     adapter.pertinentCells.addAll(horizontalLine)
                 }
 
@@ -197,7 +205,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
 
             verticalCells.forEach { verticalLine ->
 
-                if (verticalLine.contains(cellPossition)) {
+                if (verticalLine.contains(cellPosition)) {
                     adapter.pertinentCells.addAll(verticalLine)
                 }
 
@@ -208,7 +216,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
 
             groupCells.forEach { group ->
 
-                if (group.contains(cellPossition)) {
+                if (group.contains(cellPosition)) {
                     adapter.pertinentCells.addAll(group)
                 }
 
@@ -282,7 +290,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
             var randomInteger = -1
             while (!horizontalCheck || !verticalCheck || !groupCheck) {
                 randomInteger = (1..9).shuffled().first()
-                //hard and soft reset for when random numbers are creating imposible sudokus
+                //hard and soft reset for when random numbers are creating impossible Sudoku's
                 hardResetTries++
                 softResetTries++
                 var repeatedNumber = false
@@ -364,10 +372,10 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
                     sudokuMatrix[i + 7] = -1
                     sudokuMatrix[i + 8] = -1
                 }
-                // hard reset in case the previous 10+ soft reset didnt solve the problem of unsolvable sudokus it reset the whole sudoku back to square 1
+                // hard reset in case the previous 10+ soft reset didn't solve the problem of unsolvable Sudoku's it reset the whole sudoku back to square 1
                 if (hardResetTries > 600) {
                     i = 0
-                    Log.d(TAG, "doing hardreset")
+                    Log.d(TAG, "doing hard reset")
                     sudokuMatrix.clear()
                     sudokuMatrix.addAll(10..90)
                     hardResetTries = 0
