@@ -8,10 +8,8 @@ import android.view.ViewGroup
 import android.widget.RelativeLayout
 import androidx.appcompat.widget.ContentFrameLayout
 import android.content.SharedPreferences
-import android.content.res.ColorStateList
-import android.graphics.Color
-import android.util.Log
-import kotlinx.android.synthetic.main.activity_game_screen.*
+import android.util.DisplayMetrics
+import android.util.TypedValue
 import android.view.animation.TranslateAnimation
 
 
@@ -25,8 +23,6 @@ object Utils {
 
     var sharedPreferences: SharedPreferences? = null
 
-
-    @JvmStatic
     //function to add spiner to whole screen
     fun setSpinner(activity: Activity, spin: Boolean) {
         val root: ContentFrameLayout = activity.findViewById(android.R.id.content)
@@ -34,7 +30,6 @@ object Utils {
     }
 
     //function to add a spinner to a specific view
-    @JvmStatic
     fun setSpinner(activity: Activity, viewAttachment: View?, spin: Boolean) {
         activity.runOnUiThread(Thread(Runnable {
             val root = viewAttachment as ViewGroup?
@@ -57,8 +52,8 @@ object Utils {
         }))
     }
 
-    private fun removeSpinner(root: ViewGroup, recivingTries: Int = 0) {
-        var tries = recivingTries
+    private fun removeSpinner(root: ViewGroup, receivingTries: Int = 0) {
+        var tries = receivingTries
         var spinner = root.findViewById<RelativeLayout>(R.id.generic_spinner)
         tries++
         if (spinner != null) {
@@ -67,7 +62,8 @@ object Utils {
         }
         spinner = root.findViewById(R.id.generic_spinner)
         if (spinner != null && tries < SPINNER_REMOVAL_MAX_TRIES) {
-            removeSpinner(root, tries)
+            root.postDelayed(Runnable { removeSpinner(root, tries) }, 50)
+            //removeSpinner(root, tries)
         }
     }
 
@@ -84,6 +80,16 @@ object Utils {
         animate.duration = 500
         view.startAnimation(animate)
 
+    }
+
+    fun convertDpToPixel(context: Context, dp: Float): Float {
+        val resources = context.resources
+        val metrics = resources.displayMetrics
+        return dp * (metrics.densityDpi.toFloat() / DisplayMetrics.DENSITY_DEFAULT)
+    }
+
+    fun convertSpToPixel(sp: Float, context: Context): Int {
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, context.resources.displayMetrics).toInt()
     }
 
 

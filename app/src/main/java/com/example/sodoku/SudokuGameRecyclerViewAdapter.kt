@@ -1,8 +1,10 @@
 package com.example.sudoku
 
+import android.R.attr
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Color
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,6 +16,12 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.activity_game_screen.*
 import kotlinx.android.synthetic.main.activity_game_screen.view.*
 import kotlinx.android.synthetic.main.cell_layout.view.*
+import android.R.attr.right
+
+import android.R.attr.left
+import android.widget.LinearLayout
+import androidx.core.view.marginBottom
+import com.example.sodoku.toPixel
 
 
 class SudokuGameRecyclerViewAdapter(
@@ -117,12 +125,20 @@ class SudokuGameRecyclerViewAdapter(
             holder.cellValue.setBackgroundColor(ColorUtils.cellBackGroundColor)
         }
 
-
         //highlight all selected cells numbers (ex: if a 2 is selcted highlight all the number 2)
         if ((0..80).contains(selectedCell)) {
             if (displaySudokuMatrix[selectedCell] == displaySudokuMatrix[position]) {
                 holder.cellValue.setTextColor(ColorUtils.selectedValuesColor)
+                holder.cellValue.setTypeface(null, Typeface.BOLD)
+
+
+                holder.cellValue.setPadding(0,0,0,0)
+
             }
+        }else{
+            holder.cellValue.setTypeface(null, Typeface.NORMAL)
+
+            holder.cellValue.setPadding(3.toPixel(context),3.toPixel(context),3.toPixel(context),3.toPixel(context))
         }
 
 
