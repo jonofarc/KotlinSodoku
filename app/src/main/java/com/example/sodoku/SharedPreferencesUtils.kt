@@ -1,4 +1,4 @@
-package com.example.sudoku
+package com.jonofarc.sudoku
 
 import android.content.Context
 import android.content.SharedPreferences

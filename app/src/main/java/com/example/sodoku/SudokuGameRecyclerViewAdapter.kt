@@ -1,27 +1,16 @@
-package com.example.sudoku
+package com.jonofarc.sudoku
 
-import android.R.attr
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Color
 import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.android.synthetic.main.activity_game_screen.*
-import kotlinx.android.synthetic.main.activity_game_screen.view.*
+import com.jonofarc.sodoku.toPixel
 import kotlinx.android.synthetic.main.cell_layout.view.*
-import android.R.attr.right
-
-import android.R.attr.left
-import android.widget.LinearLayout
-import androidx.core.view.marginBottom
-import com.example.sodoku.toPixel
 
 
 class SudokuGameRecyclerViewAdapter(

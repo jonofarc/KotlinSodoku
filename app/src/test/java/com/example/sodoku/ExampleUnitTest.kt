@@ -1,4 +1,4 @@
-package com.example.sudoku
+package com.jonofarc.sudoku
 
 import org.junit.Test
 

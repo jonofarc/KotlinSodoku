@@ -1,4 +1,4 @@
-package com.example.sudoku
+package com.jonofarc.sudoku
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -42,7 +42,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
     private lateinit var gameCompletedCl: ConstraintLayout
     val answersHideList: MutableList<Int> = mutableListOf()
     private var errors = 0
-    private var errorsTV : TextView? = null
+    private var errorsTV: TextView? = null
 
     private val horizontalCells = mutableListOf(
         mutableListOf(0, 1, 2, 3, 4, 5, 6, 7, 8),
@@ -109,7 +109,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
                 adapter.currentSetValue.toString(),
                 adapter.selectedCell
             )
-            if(!correctValue){
+            if (!correctValue) {
                 errors++
 
                 errorsTV?.text = activity.getString(R.string.errors, errors)
@@ -137,21 +137,19 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
         displaySudokuMatrix.forEach {
             if (answersHashMap.containsKey(it)) {
                 // increment count corresponding to c
-                answersHashMap[it] = answersHashMap[it]!!+1
+                answersHashMap[it] = answersHashMap[it]!! + 1
 
             } else {
                 answersHashMap[it] = 1
             }
         }
         answersHashMap.forEach {
-            Log.d("jon", "character occurrences "+it.key+" = "+it.value)
-            if(it.value >= 9){
+            Log.d("jon", "character occurrences " + it.key + " = " + it.value)
+            if (it.value >= 9) {
                 answersHideList.add(it.key)
             }
 
         }
-
-
 
 
     }

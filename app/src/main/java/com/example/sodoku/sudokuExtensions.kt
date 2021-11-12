@@ -1,8 +1,7 @@
-package com.example.sodoku
+package com.jonofarc.sodoku
 
 import android.content.Context
-import com.example.sudoku.Utils
-import java.util.*
+import com.jonofarc.sudoku.Utils
 
 /**
  * Convenience extension method for getting pixels from dp

@@ -1,6 +1,5 @@
-package com.example.sudoku
+package com.jonofarc.sudoku
 
-import android.content.res.ColorStateList
 import android.graphics.Color
 import android.util.Log
 

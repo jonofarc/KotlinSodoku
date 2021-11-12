@@ -1,4 +1,4 @@
-package com.example.sudoku
+package com.jonofarc.sudoku
 
 import android.app.Activity
 import android.content.Intent

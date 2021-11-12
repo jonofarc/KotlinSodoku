@@ -1,8 +1,8 @@
-package com.example.sudoku
+package com.jonofarc.sudoku
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.SeekBar
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_game_screen.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -74,7 +74,6 @@ class MainActivity : AppCompatActivity() {
             mainActivityRepository.setDificultyLvl(hardValue)
             mainActivityRepository.startGame()
         }
-
 
 
     }

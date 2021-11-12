@@ -1,4 +1,4 @@
-package com.example.sudoku
+package com.jonofarc.sudoku
 
 import android.app.Activity
 import android.content.res.ColorStateList
@@ -225,7 +225,7 @@ class GameScreenActivity : AppCompatActivity() {
         gameScreenRepository.updateSelectedValues()
         gameScreenRepository.answersHideList.forEach {
 
-            when(it){
+            when (it) {
                 1 -> selectedValue1.visibility = View.INVISIBLE
                 2 -> selectedValue2.visibility = View.INVISIBLE
                 3 -> selectedValue3.visibility = View.INVISIBLE
@@ -282,12 +282,12 @@ class GameScreenActivity : AppCompatActivity() {
 
         //button color
         valuesLl1.children.forEach {
-            if(it is Button){
+            if (it is Button) {
                 it.setBackgroundColor(ColorUtils.buttonsColor)
             }
         }
         valuesLl2.children.forEach {
-            if(it is Button){
+            if (it is Button) {
                 it.setBackgroundColor(ColorUtils.buttonsColor)
             }
         }
@@ -297,12 +297,12 @@ class GameScreenActivity : AppCompatActivity() {
 
         //button text color
         valuesLl1.children.forEach {
-            if(it is Button){
+            if (it is Button) {
                 it.setTextColor(ColorUtils.buttonsTextColor)
             }
         }
         valuesLl2.children.forEach {
-            if(it is Button){
+            if (it is Button) {
                 it.setTextColor(ColorUtils.buttonsTextColor)
             }
         }
