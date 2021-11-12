@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onProgressChanged(seekBar: SeekBar, progress: Int, fromUser: Boolean) {
                 dificultyValue.text = progress.toString()
-                mainActivityRepository.setDificultyLvl(progress)
+                mainActivityRepository.setDifficultyLvl(progress)
 
                 when {
                     progress > hardValue -> {
@@ -61,17 +61,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         easyLevelGameBtn.setOnClickListener {
-            mainActivityRepository.setDificultyLvl(easyValue)
+            mainActivityRepository.setDifficultyLvl(easyValue)
             mainActivityRepository.startGame()
         }
 
         normalLevelGameBtn.setOnClickListener {
-            mainActivityRepository.setDificultyLvl(normalValue)
+            mainActivityRepository.setDifficultyLvl(normalValue)
             mainActivityRepository.startGame()
         }
 
         hardLevelGameBtn.setOnClickListener {
-            mainActivityRepository.setDificultyLvl(hardValue)
+            mainActivityRepository.setDifficultyLvl(hardValue)
             mainActivityRepository.startGame()
         }
 

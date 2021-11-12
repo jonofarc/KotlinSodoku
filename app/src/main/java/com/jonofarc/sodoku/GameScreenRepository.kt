@@ -22,7 +22,7 @@ interface GameScreenRepository {
         errorsTV: TextView,
     )
 
-    fun setCurrentValue(i: Int)
+    fun setCurrentValue(currentValue: Int)
     fun notifyDataSetChanged()
     fun updateSelectedValues()
 }
@@ -92,11 +92,11 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
         sudokuRV: RecyclerView,
         debugCorrectCells: TextView,
         gameCompletedCl: ConstraintLayout,
-        mErrorsTV: TextView,
+        errorsTV: TextView,
     ) {
         this.gameCompletedCl = gameCompletedCl
         setSudokuGameRecyclerViewAdapter(sudokuRV, debugCorrectCells)
-        errorsTV = mErrorsTV
+        this.errorsTV = errorsTV
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -111,7 +111,7 @@ class GameScreenImpl(val activity: Activity) : GameScreenRepository {
             )
             if (!correctValue) {
                 errors++
-
+                errorsTV?.visibility = View.VISIBLE
                 errorsTV?.text = activity.getString(R.string.errors, errors)
             }
             displaySudokuMatrix[adapter.selectedCell] = adapter.currentSetValue
